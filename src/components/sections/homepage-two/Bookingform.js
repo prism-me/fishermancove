@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 // import {KeyboardDatePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 // import DateFnsUtils from '@date-io/date-fns';
 import DatePickerComponent from "../../layouts/DatePickerComponent";
-import $ from "jquery";
 
 const year = `${new Date().getFullYear()}`;
 const month = (new Date().getMonth() + 1).toString().length === 1 ? `0${new Date().getMonth() + 1}` : `${new Date().getMonth() + 1}`;

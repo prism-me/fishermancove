@@ -13,6 +13,12 @@ import isWithinInterval from "date-fns/isWithinInterval";
 
 const materialUiTheme = createMuiTheme({
     overrides: {
+        MuiPopover:{
+          root:{
+              position:"absolute !important",
+              zIndex:"2 !important"
+          }
+        },
         MuiPickersDay: {
             day: {
                 color: "white",
@@ -42,6 +48,9 @@ const materialUiTheme = createMuiTheme({
 });
 
 const styles = createStyles(theme => ({
+    root:{
+        position:"absolute !important"
+    },
     dayWrapper: {
         position: "relative",
     },
@@ -166,9 +175,9 @@ const DatePickerComponent = (props) => {
                     animateYearScrolling={true}
                     autoOk={true}
                     onOpen={onOpen}
-                    // PopoverProps={{
-                    //     disableScrollLock: true,
-                    // }}
+                    PopoverProps={{
+                        disableScrollLock: true,
+                    }}
                     onClose={onClose}
                     disablePast={disablePast}
                     open={open}
