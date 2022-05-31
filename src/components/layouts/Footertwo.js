@@ -165,8 +165,9 @@ class Footertwo extends Component {
                   <a href="https://story-hospitality.com/" target='_blank'><img className="px-2" src={require('./../../assets/img/footer/story-hospitality-footer.png')} alt="story-rabat hospitality footer" /></a>
                   <a href="https://www.story-rabat.com/" target='_blank'><img className="px-2" src={require('./../../assets/img/footer/story-rabat-footer.png')} alt="sotry-rabat footer" /></a>
                   <a href="https://www.cue-podgorica.com/" target='_blank'><img className="px-2" src={require('./../../assets/img/footer/cue-hotel-footer.png')} alt="cue hotel footer" /></a>
-                  <a href="https://www.hhoteldubai.com/" target='_blank'> <img className="px-2 hhotel-dubai-footer" src={require('./../../assets/img/footer/hhotel-footer.png')} alt="hhotel footer" /></a>
                   <a href="/"><img className="px-2" src={require('./../../assets/img/footer/logo-fisher.png')} alt="fishermanscove footer" /></a>
+                  <a href="https://www.hhoteldubai.com/" target='_blank'> <img className="px-2 hhotel-dubai-footer" src={require('./../../assets/img/footer/hhotel-footer.png')} alt="hhotel footer" /></a>
+                  <a href="https://almayauae.com/"><img className="px-2" src={require('./../../assets/img/footer/al-maya.png')} style={{width : "140px"}} alt="fishermanscove footer" /></a>
                 </div>
                 <div className="social-icons py-2">
                   <a href="https://www.tripadvisor.co.za/Hotel_Review-g1185571-d302667-Reviews-Fisherman_s_Cove_Resort-Beau_Vallon_Mahe_Island.html" target='_blank'>
