@@ -9,14 +9,19 @@ import $ from "jquery";
 const year = `${new Date().getFullYear()}`;
 const month = (new Date().getMonth() + 1).toString().length === 1 ? `0${new Date().getMonth() + 1}` : `${new Date().getMonth() + 1}`;
 const day = (new Date().getDate()).toString().length === 1 ? `0${new Date().getDate()}` : `${new Date().getDate()}`;
-const day2 = (new Date().getDate() + 1).toString().length === 1 ? `0${new Date().getDate() + 1}` : `${new Date().getDate() + 1}`;
+var date = new Date();
+date.setDate(date.getDate() + 1);
+const year2 = date.getFullYear();
+const month2 = (date.getMonth() + 1).toString().length === 1 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+const day2 = (date.getDate()).toString().length === 1 ? `0${date.getDate()}` : `${date.getDate()}`;
 
+console.log("============day============",year2,month2,day2)
 class Bookingform extends Component {
     constructor(props) {
         super(props);
         this.state = {
             checkIn: `${year}-${month}-${day}`,
-            checkOut: `${year}-${month}-${day2}`,
+            checkOut: `${year2}-${month2}-${day2}`,
             openCheckOut: false,
             openCheckIn: false,
             adults: 1,
@@ -27,7 +32,7 @@ class Bookingform extends Component {
             chain: 27304,
             hotel: 31842,
             promo: '',
-            checkOutMin: `${year}-${month}-${day2}`
+            checkOutMin: `${year2}-${month2}-${day2}`
         }
         this.wrapperRef = React.createRef();
         this.propmoWrapperRef = React.createRef();
