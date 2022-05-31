@@ -171,7 +171,7 @@ function gtag_report_conversion(url) {
     
   </div>
   <script>
-    if ('serviceWorker' in navigator) {
+    if (false && 'serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('worker.js').then(function (registration) {
           console.log('Worker registration successful', registration.scope);
