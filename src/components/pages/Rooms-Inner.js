@@ -237,6 +237,15 @@ class RoomsInner extends Component {
         //getting and appending images to single room data
         // const imagesResponse = await API.get('/post_uploads/' + id);
         // singleRoom.images = imagesResponse.data.filter(x => x["360_view"] == "");
+        //getting and appending images to single room data
+        // const imagesResponse = await API.get('/post_uploads/' + id);
+        // singleRoom.images = imagesResponse.data.filter(x => x["360_view"] == "");
+        //getting and appending images to single room data
+        // const imagesResponse = await API.get('/post_uploads/' + id);
+        // singleRoom.images = imagesResponse.data.filter(x => x["360_view"] == "");  //getting and appending images to single room data
+        // const imagesResponse = await API.get('/post_uploads/' + id);
+        // singleRoom.images = imagesResponse.data.filter(x => x["360_view"] == "");
+
 
         // singleRoom.images360 = imagesResponse.data.filter(x => x["360_view"] == "1");
         this.setState({ singleRoom });
