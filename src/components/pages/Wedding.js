@@ -73,7 +73,9 @@ class Wedding extends Component {
               activeLang={activeLang}
             >
               {/*====== TITLE START ======*/}
-              <WeddingTitleBlock intro={this.state.intro} />
+              <WeddingTitleBlock intro={this.state.intro}
+                activeLang={activeLang}
+              />
               {/*====== TITLE END ======*/}
               {/*====== ROOM GRID START ======*/}
               <WeddingGrid title={constants?.site_content?.weddings_page?.wedding_grid?.title[activeLang]}

@@ -478,6 +478,13 @@ export const constants = {
           de: "Hochzeiten"
         }
       },
+      text_block: {
+        btn_txt: {
+          en: "Download Wedding Brochure",
+          fr: "Télécharger la brochure de mariage",
+          de: "Hochzeitsbroschüre herunterladen"
+        }
+      },
       wedding_grid: {
         title: {
           en: "Wedding Services",

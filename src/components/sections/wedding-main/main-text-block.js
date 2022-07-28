@@ -1,4 +1,6 @@
 import React from 'react';
+import { constants } from '../../../utils/constants';
+import { Link } from 'react-router-dom';
 
 const WeddingTitleBlock = (props) => {
   return (
@@ -19,6 +21,13 @@ const WeddingTitleBlock = (props) => {
               <br/> 
               We can even take care of all the legal documents that are required for the ceremony as well as the event through tailor-made packages which make Fishermans Cove one of the top wedding and event venues in Seychelles.
               </p> */}
+
+            <Link to="/files/FC-WeddingBrochure.pdf" download target="_blank">
+              <button className="main-btn btn-eden mt-3">
+                {constants?.site_content?.weddings_page?.text_block?.btn_txt[props?.activeLang]}
+              </button>
+            </Link>
+
           </div>
           <div className="wedding-title-item img-wrapper">
             <img alt="" src={require('./../../../assets/img/banner/wedding.jpg')} />
