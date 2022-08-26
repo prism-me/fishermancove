@@ -1,103 +1,95 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import AboutTitleBlock from '../sections/about-us/main-text-block';
 import AboutServices from '../sections/about-us/about-services';
 import AboutSecondaryTextBlock from '../sections/about-us/secondary-text-block';
 import AboutOfferSlider from '../sections/about-us/about-offer-slider';
-import API from '../../langapi/http';
 import PageLayout from '../layouts/PageLayout';
 import SEOTags from "../sections/common/SEOTags";
 import { constants } from "../../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSections, removeSelectedSection } from '../../redux/actions/sectionsActions';
+import { fetchPremiuimOffers } from '../../redux/actions/premiuimOffersActions';
 
-const pageId = `6297070d0da7c94b690c6cc3`;
+const AboutUs = (props) => {
 
-class AboutUs extends Component {
-  state = {
-    premiumOffers: [],
-    sections: null,
-    banner: null,
-    meta: {}
-  }
+  const dispatch = useDispatch();
+  const activeLang = localStorage.getItem('lang');
 
-  componentDidMount(prevState) {
-    try {
+  //about page
+  const pageId = `6297070d0da7c94b690c6cc3`;
 
-      const activeLang = localStorage.getItem('lang');
+  useEffect(() => {
+    if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
+    return () => {
+      dispatch(removeSelectedSection());
+    };
+  }, [pageId]);
 
-      API.get(`/get_premium_offers?lang=${activeLang}`).then(response => {
-        this.setState({ premiumOffers: response.data?.data })
-      })
-        .then(() => {
-          API.get(`/all-sections/${pageId}/${activeLang}`).then(response => {
-            this.setState({
-              banner: response?.data?.data[0]?.banner,
-              sections: response?.data?.data[0],
-              meta: response?.data?.data[0]?.meta
-            });
-          })
-        })
-    }
-    catch (error) {
-      console.log(error)
-    }
-  }
+  //Premiuim offers 
 
-  render() {
+  useEffect(() => {
     const activeLang = localStorage.getItem('lang');
+    if (activeLang && activeLang !== "") dispatch(fetchPremiuimOffers(activeLang));
+  }, []);
 
-    const breadcrumbItems = [
-      {
-        text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
-        link: '/',
-        isActive: false,
-      },
-      {
-        text: `${constants?.site_content?.about_page?.bread_crumb?.title2[activeLang]}`,
-        link: '/about-us',
-        isActive: true,
-      },
-    ];
+  const premiumOffers = useSelector((state) => state.allPremiuimOffers.premiuimoffers);
+  const banner = useSelector((state) => state.allSections.sections?.banner);
+  const sections = useSelector((state) => state.allSections.sections);
+  const meta = useSelector((state) => state.allSections.sections?.meta);
 
-    return (
-      <div className="bg-white about-us-wrapper">
-        <SEOTags meta={this.state.meta} />
-        {
-          this.state.banner ?
-            <PageLayout
-              header={{ isMobile: this.props.isMobile, isTop: this.props.isTop }}
-              banner={{ title: this.state.banner?.section_name, image: this.state.banner?.section_avatar?.avatar }}
-              breadCrumb={{ items: breadcrumbItems }}
+  const breadcrumbItems = [
+    {
+      text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
+      link: '/',
+      isActive: false,
+    },
+    {
+      text: `${constants?.site_content?.about_page?.bread_crumb?.title2[activeLang]}`,
+      link: '/about-us',
+      isActive: true,
+    },
+  ];
+
+  return (
+    <div className="bg-white about-us-wrapper">
+      <SEOTags meta={meta} />
+      {
+        banner ?
+          <PageLayout
+            header={{ isMobile: props.isMobile, isTop: props.isTop }}
+            banner={{ title: banner?.section_name, image: banner?.section_avatar?.avatar }}
+            breadCrumb={{ items: breadcrumbItems }}
+            activeLang={activeLang}
+          >
+            <AboutTitleBlock data={sections?.intro}
+            />
+            {/*====== TITLE END ======*/}
+
+            {/*====== SERVICES START ======*/}
+            <AboutServices
               activeLang={activeLang}
-            >
-              <AboutTitleBlock data={this.state.sections?.intro}
-              />
-              {/*====== TITLE END ======*/}
+            />
+            {/*====== SERVICES END ======*/}
+            {/*====== SECONDARY START ======*/}
+            <AboutSecondaryTextBlock data={sections?.dine}
+              activeLang={activeLang}
+            />
+            {/*====== SECONDARY END ======*/}
+            {/*====== ABOUT SLIDER START ======*/}
+            <AboutOfferSlider data={premiumOffers} title={constants?.site_content?.about_page?.about_offer?.title[activeLang]}
+              activeLang={activeLang}
+            />
 
-              {/*====== SERVICES START ======*/}
-              <AboutServices
-                activeLang={activeLang}
-              />
-              {/*====== SERVICES END ======*/}
-              {/*====== SECONDARY START ======*/}
-              <AboutSecondaryTextBlock data={this.state.sections?.dine}
-                activeLang={activeLang}
-              />
-              {/*====== SECONDARY END ======*/}
-              {/*====== ABOUT SLIDER START ======*/}
-              <AboutOfferSlider data={this.state.premiumOffers} title={constants?.site_content?.about_page?.about_offer?.title[activeLang]}
-                activeLang={activeLang}
-              />
-
-            </PageLayout>
-            :
-            <div className={"preloader align-items-center justify-content-center"}>
-              <div className="cssload-container">
-                <div className="cssload-loading"><i /><i /><i /><i /></div>
-              </div>
+          </PageLayout>
+          :
+          <div className={"preloader align-items-center justify-content-center"}>
+            <div className="cssload-container">
+              <div className="cssload-loading"><i /><i /><i /><i /></div>
             </div>
-        }
-      </div>
-    );
-  }
+          </div>
+      }
+    </div>
+  );
 }
 
 export default AboutUs;

@@ -10,13 +10,17 @@ import "../node_modules/slick-carousel/slick/slick.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './assets/css/default.css';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-
-
 import './App.scss';
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
   // <BrowserRouter>
-  <App />,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
   // </BrowserRouter>,
   document.getElementById('miranda')
 );

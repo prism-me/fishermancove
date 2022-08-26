@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 
 //components
 import Textblock from "../sections/homepage-two/Textblock";
@@ -11,99 +11,97 @@ import bannerimg1 from "../../assets/img/banner/home.jpg";
 import PopUp from "../popup/PopUp";
 import Helmet from "react-helmet";
 import PageLayout from '../layouts/PageLayout';
-
-
 import { constants } from "../../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPremiuimOffers } from '../../redux/actions/premiuimOffersActions';
 
-const pageId = 93;
 
-class Hometwo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      premiumOffers: [],
-      roomsData: [],
-      meta: {},
-      offerPopup: true,
-    };
+const Hometwo = (props) => {
 
-    this.handleShowOffer = this.handleShowOffer.bind(this);
+  const dispatch = useDispatch();
+  const activeLang = localStorage.getItem('lang');
+
+  const [offerPopup, setOfferPopup] = useState(true);
+
+  const handleShowOffer = () => {
+    setOfferPopup(!offerPopup);
   }
 
-  handleShowOffer() {
-    this.setState({ offerPopup: !this.state.offerPopup });
-  }
+  //Premiuim offers 
 
-  componentDidMount() {
-    try {
-      const activeLang = localStorage.getItem('lang');
-
-      API.get(`/get_premium_offers?lang=${activeLang}`).then((response) => {
-        this.setState({ premiumOffers: response.data?.data });
-      })
-
-      API.get(`/get_rooms_list?lang=${activeLang}`).then((response) => {
-        const roomsData = response.data?.data;
-        this.setState({
-          roomsData: roomsData
-        });
-      });
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  render() {
+  useEffect(() => {
     const activeLang = localStorage.getItem('lang');
+    if (activeLang && activeLang !== "") dispatch(fetchPremiuimOffers(activeLang));
+  }, []);
 
-    return (
-      <div>
-        <Helmet>
-          <title>
-            Fishermans Cove Resort
-          </title>
-          <meta name="description" content="Fishermans Cove Resort" />
+  //  rooms Data
 
-        </Helmet>
+  const [roomsData, setRoomsData] = useState([]);
 
-        <PageLayout
-          header={{ isMobile: this.props.isMobile, isTop: this.props.isTop }}
-          banner={{ title: constants?.site_content?.home_page?.banner?.title[activeLang], image: bannerimg1 }}
-          // breadCrumb={{ items: breadcrumbItems }}
+  const getRoomsData = () => {
+    API.get(`/get_rooms_list?lang=${activeLang}`).then(response => {
+      const allData = response.data?.data;
+      setRoomsData(allData);
+    })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    getRoomsData();
+  }, [activeLang]);
+
+  const premiumOffers = useSelector((state) => state.allPremiuimOffers.premiuimoffers);
+
+  return (
+    <div>
+      <Helmet>
+        <title>
+          Fishermans Cove Resort
+        </title>
+        <meta name="description" content="Fishermans Cove Resort" />
+
+      </Helmet>
+
+      <PageLayout
+        header={{ isMobile: props.isMobile, isTop: props.isTop }}
+        banner={{ title: constants?.site_content?.home_page?.banner?.title[activeLang], image: bannerimg1 }}
+        // breadCrumb={{ items: breadcrumbItems }}
+        activeLang={activeLang}
+        key={"home"}
+        isMain={true}
+      >
+        {/*====== ROOM SLIDER START ======*/}
+        <RoomSlider data={roomsData}
           activeLang={activeLang}
-          key={"home"}
-          isMain={true}
-        >
-          {/*====== ROOM SLIDER START ======*/}
-          <RoomSlider data={this.state.roomsData}
-            activeLang={activeLang}
-          />
+        />
 
-          {/*====== ROOM SLIDER END ======*/}
-          {/*====== TEXT BLOCK START ======*/}
-          <Textblock
-            activeLang={activeLang}
-          />
-          {/*====== TEXT BLOCK END ======*/}
-          {/*====== SERVICES TABS START ======*/}
-          <ServiceTabs data={this.state.premiumOffers}
-            activeLang={activeLang}
-          />
-          {/*====== SERVICES TABS END ======*/}
-          {/*====== TESTIMONIAL SLIDER START ======*/}
-          <GuestReviews
-            activeLang={activeLang}
-          />
-          {/*====== EXPERIENCE START ======*/}
-          <Experience
-            activeLang={activeLang}
-          />
-          {/*====== EXPERIENCE END ======*/}
-          <PopUp show={this.state.offerPopup} onHide={this.handleShowOffer}
-            activeLang={activeLang}
-          />
-        </PageLayout>
-        {/* <div style={{ display: "none" }}>
+        {/*====== ROOM SLIDER END ======*/}
+        {/*====== TEXT BLOCK START ======*/}
+        <Textblock
+          activeLang={activeLang}
+        />
+        {/*====== TEXT BLOCK END ======*/}
+        {/*====== SERVICES TABS START ======*/}
+        <ServiceTabs data={premiumOffers}
+          activeLang={activeLang}
+        />
+        {/*====== SERVICES TABS END ======*/}
+        {/*====== TESTIMONIAL SLIDER START ======*/}
+        <GuestReviews
+          activeLang={activeLang}
+        />
+        {/*====== EXPERIENCE START ======*/}
+        <Experience
+          activeLang={activeLang}
+        />
+        {/*====== EXPERIENCE END ======*/}
+        <PopUp show={offerPopup} onHide={handleShowOffer}
+          activeLang={activeLang}
+        />
+      </PageLayout>
+      {/* <div style={{ display: "none" }}>
           <h3>
             What are the best luxury resorts for stays in Seychelles Victoria?{" "}
           </h3>
@@ -149,9 +147,8 @@ class Hometwo extends Component {
             service.
           </p>
         </div> */}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Hometwo;

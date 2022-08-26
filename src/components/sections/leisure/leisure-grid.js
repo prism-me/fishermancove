@@ -1,12 +1,12 @@
 import React from 'react';
 import RoomGridItem from './leisure-grid-item';
 
-const LeisureGrid = (props) => {
+const LeisureGrid = ({ actData }) => {
   return (
     <div className='container'>
       <div className='leisure-grid-wrapper'>
         {
-          Object.entries(props.actData)?.map(([key, x]) => (
+          Object.entries(actData)?.map(([key, x]) => (
             <RoomGridItem title={x.section_name} image={x.section_avatar?.avatar} />
           ))
         }

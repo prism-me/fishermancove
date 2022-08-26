@@ -6,25 +6,26 @@ import ReactPaginate from "react-paginate";
 import PageLayout from '../layouts/PageLayout';
 import { constants } from '../../utils/constants';
 import SEOTags from "../sections/common/SEOTags";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSections, removeSelectedSection } from '../../redux/actions/sectionsActions';
 
 const Blog = (props) => {
+
+  const dispatch = useDispatch();
   const activeLang = localStorage.getItem('lang');
 
   //blog page
   const pageId = '629a0927f08f18452f364ba2';
 
-  const [banner, setBanner] = useState(null);
-  const [meta, setMeta] = useState({});
+  useEffect(() => {
+    if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
+    return () => {
+      dispatch(removeSelectedSection());
+    };
+  }, [pageId]);
 
-  const getBlogPageData = () => {
-    API.get(`/all-sections/${pageId}/${activeLang}`).then(response => {
-      setBanner(response?.data?.data[0]?.banner);
-      setMeta(response?.data?.data[0]?.meta);
-    })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+  const banner = useSelector((state) => state.allSections.sections?.banner);
+  const meta = useSelector((state) => state.allSections.sections?.meta);
 
   //  blog Data
 
@@ -61,7 +62,6 @@ const Blog = (props) => {
 
     getBlogData();
     getRecentData();
-    getBlogPageData();
 
   }, [activeLang]);
 
@@ -76,7 +76,7 @@ const Blog = (props) => {
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((x, i) => {
       return (
-        <div className="post-box mb-40" key={i}>
+        <div className="post-box mb-40" key={x?._id}>
           <div className="post-media">
             <img src={x?.img} alt="image" />
           </div>

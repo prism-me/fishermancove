@@ -1,79 +1,68 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import PrivacyIntroBlock from '../sections/privacy-policy/intro-block';
-import API from '../../langapi/http';
 import SEOTags from "../sections/common/SEOTags";
 import PageLayout from "../layouts/PageLayout";
 import { constants } from '../../utils/constants';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSections, removeSelectedSection, } from '../../redux/actions/sectionsActions';
 
+const TermsofUse = (props) => {
 
-const pageId = '629712d4b2b9bd47050b7fd2';
-class TermsofUse extends Component {
+    const dispatch = useDispatch();
+    const activeLang = localStorage.getItem('lang');
 
-    state = {
-        intro: null,
-        banner: null,
-        meta: {}
-    }
+    //Terms of use page
+    const pageId = '629712d4b2b9bd47050b7fd2';
 
-    componentDidMount() {
-        try {
-            const activeLang = localStorage.getItem('lang');
+    useEffect(() => {
+        if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
+        return () => {
+            dispatch(removeSelectedSection());
+        };
+    }, [pageId]);
 
-            API.get(`/all-sections/${pageId}/${activeLang}`).then(response => {
-                this.setState({
-                    banner: response?.data?.data[0]?.banner,
-                    intro: response?.data?.data[0]?.intro,
-                    meta: response?.data?.data[0]?.meta
-                });
-            })
+    const banner = useSelector((state) => state.allSections.sections?.banner);
+    const intro = useSelector((state) => state.allSections.sections?.intro);
+    const meta = useSelector((state) => state.allSections.sections?.meta);
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    render() {
-        const activeLang = localStorage.getItem('lang');
-
-        const breadcrumbItems = [
+    const breadcrumbItems = [
+        {
+            text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
+            link: '/',
+            isActive: false,
+        },
+        {
+            text: `${constants?.site_content?.terms_page?.bread_crumb?.title2[activeLang]}`,
+            link: '/terms-of-use',
+            isActive: true,
+        },
+    ]
+    return (
+        <div className="bg-white privacy-policy-wrapper">
+            <SEOTags meta={meta} />
             {
-                text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
-                link: '/',
-                isActive: false,
-            },
-            {
-                text: `${constants?.site_content?.terms_page?.bread_crumb?.title2[activeLang]}`,
-                link: '/terms-of-use',
-                isActive: true,
-            },
-        ]
-        return (
-            <div className="bg-white privacy-policy-wrapper">
-                <SEOTags meta={this.state.meta} />
-                {
-                    this.state.banner ?
-                        <PageLayout
-                            header={{ isMobile: this.props.isMobile, isTop: this.props.isTop }}
-                            banner={{ title: this.state.banner?.section_name, image: this.state.banner?.section_avatar?.avatar }}
-                            breadCrumb={{ items: breadcrumbItems }}
-                            activeLang={activeLang}
-                        >
+                banner ?
+                    <PageLayout
+                        header={{ isMobile: props.isMobile, isTop: props.isTop }}
+                        banner={{ title: banner?.section_name, image: banner?.section_avatar?.avatar }}
+                        breadCrumb={{ items: breadcrumbItems }}
+                        activeLang={activeLang}
+                    >
 
-                            {/*/!*====== INTRO START ======*!/*/}
-                            <PrivacyIntroBlock data={this.state.intro} />
-                            {/*====== INTRO END ======*/}
+                        {/*/!*====== INTRO START ======*!/*/}
+                        <PrivacyIntroBlock data={intro} />
+                        {/*====== INTRO END ======*/}
 
-                        </PageLayout>
-                        :
-                        <div className={"preloader align-items-center justify-content-center"}>
-                            <div className="cssload-container">
-                                <div className="cssload-loading"><i /><i /><i /><i /></div>
-                            </div>
+                    </PageLayout>
+                    :
+                    <div className={"preloader align-items-center justify-content-center"}>
+                        <div className="cssload-container">
+                            <div className="cssload-loading"><i /><i /><i /><i /></div>
                         </div>
-                }
-            </div>
-        );
-    }
+                    </div>
+            }
+        </div>
+    );
 }
 
 export default TermsofUse;

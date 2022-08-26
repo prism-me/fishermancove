@@ -2,15 +2,15 @@ import React from 'react';
 import { constants } from '../../../utils/constants';
 
 
-const LeisureContentBlocks = (props) => {
+const LeisureContentBlocks = ({ activities, activeLang }) => {
   return (
     <div className="content-blocks">
       <div className="container">
         <h2 className="text-center main-title">
-          {constants?.site_content?.leisureInner_page?.text_block?.title[props?.activeLang]}
+          {constants?.site_content?.leisureInner_page?.text_block?.title[activeLang]}
         </h2>
         {
-          Object.entries(props.activities)?.map(([key, x]) => (
+          Object.entries(activities)?.map(([key, x]) => (
             <div className="content-item">
               <div className="text-item">
                 <h4>{x.section_name}</h4>

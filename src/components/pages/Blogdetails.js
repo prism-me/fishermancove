@@ -152,7 +152,7 @@ const Blogdetails = (props) => {
                             <div className="row">
                               {
                                 blogData?.map((x, i) => (
-                                  <div className="col-md-6" key={i}>
+                                  <div className="col-md-6" key={x?._id}>
                                     <div className="related-post-box mb-50">
                                       <img src={x?.img} alt="img" className='imgstyle' />
                                       {/* <div className="thumb"

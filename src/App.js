@@ -1,10 +1,11 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import Preloader from './components/layouts/Preloader';
 import ScrollToTop from './components/layouts/ScrollToTop';
 import Error404 from './components/pages/Error404';
-import API from './langapi/http';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPages } from "./redux/actions/pagesActions";
+
 
 // ********* lazy loading componentes *******
 const Hometwo = lazy(() => import('./components/pages/Hometwo'));
@@ -31,7 +32,8 @@ const FAQ = lazy(() => import('./components/pages/FAQ'));
 const Blog = lazy(() => import('./components/pages/Blog'));
 const Blogdetails = lazy(() => import('./components/pages/Blogdetails'));
 
-function App() {
+
+function App(props) {
 
   //language 
 
@@ -39,12 +41,10 @@ function App() {
   useEffect(() => {
     const activeLang = localStorage.getItem('lang');
     const pathArray = window.location.pathname.split('/');
-    console.log('pathArray', pathArray);
-
 
     let lang = 'en';
     if (pathArray[1] && (pathArray[1] == 'en' || pathArray[1] == 'fr' || pathArray[1] == 'de' || pathArray[1] == 'ru')) {
-      console.log('homelanguage', pathArray[1]);
+      // console.log('homelanguage', pathArray[1]);
       lang = pathArray[1];
     }
     else {
@@ -67,7 +67,6 @@ function App() {
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTop, setIsTop] = useState(false);
-  const [appRoutes, setAppRoutes] = useState([]);
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -81,16 +80,14 @@ function App() {
     }, false);
   })
 
+
+  const pages = useSelector((state) => state.allPages.pages);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const activeLang = localStorage.getItem('lang');
-
-    API.get(`/get_pages?lang=${activeLang}`).then(res => {
-      if (res.status === 200) {
-        const data = res?.data?.data;
-        setAppRoutes(data);
-      }
-    })
-  }, [])
+    if (activeLang && activeLang !== "") dispatch(fetchPages(activeLang));
+  }, []);
 
   const mapRoute = (slug) => {
 
@@ -338,9 +335,9 @@ function App() {
           <Route path={`/ru/blogs/:id`} exact render={(props) => <Blogdetails {...props} isMobile={isMobile} isTop={isTop} />} />
 
 
-          {
-
-            appRoutes?.map(x => (
+          {pages &&
+            pages.length > 0 &&
+            pages?.map(x => (
               mapRoute(x.slug)
             ))
 

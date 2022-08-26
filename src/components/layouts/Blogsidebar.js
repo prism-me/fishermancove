@@ -16,7 +16,7 @@ class Blogsidebar extends Component {
 
             {
               recentBlog?.map((x, i) => (
-                <div className="single-popular-feed" key={i}>
+                <div className="single-popular-feed" key={x?._id}>
                   <div className="feed-img">
                     <img src={x?.img} alt="image" />
                   </div>

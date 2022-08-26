@@ -1,86 +1,93 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import FAQIntroBlock from '../sections/faq/intro-block';
 import API from '../../langapi/http';
 import SEOTags from "../sections/common/SEOTags";
 import PageLayout from "../layouts/PageLayout";
 import { constants } from '../../utils/constants';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSections, removeSelectedSection, } from '../../redux/actions/sectionsActions';
 
+const FAQ = (props) => {
 
-const pageId = '6297124bb6801e339e7cb7c2';
-class FAQ extends Component {
-  state = {
-    banner: null,
-    meta: {},
-    faqsData: []
-  }
+  const dispatch = useDispatch();
+  const activeLang = localStorage.getItem('lang');
 
-  async componentDidMount() {
-    try {
-      const activeLang = localStorage.getItem('lang');
+  //faq  page
+  const pageId = `6297124bb6801e339e7cb7c2`;
 
-      const response = await API.get(`/faqs?lang=${activeLang}`);
-      this.setState({
-        faqsData: response?.data?.data?.filter(
-          (x) => x.page === "faq"
-        ) || [],
-      });
+  useEffect(() => {
+    if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
+    return () => {
+      dispatch(removeSelectedSection());
+    };
+  }, [pageId]);
 
-      API.get(`/all-sections/${pageId}/${activeLang}`).then(response => {
-        this.setState({
-          banner: response?.data?.data[0]?.banner,
-          meta: response?.data?.data[0]?.meta
-        });
+  //  faqs Data
+
+  const [faqsData, setFaqsData] = useState([]);
+
+  const getFaqData = () => {
+    API.get(`/faqs?lang=${activeLang}`).then(response => {
+      const allData = response.data?.data?.filter(
+        (x) => x.page === "faq"
+      ) || [];
+      setFaqsData(allData);
+    })
+      .catch(err => {
+        console.log(err)
       })
-    } catch (error) {
-      console.log(error);
-    }
   }
-  render() {
-    const activeLang = localStorage.getItem('lang');
 
-    const breadcrumbItems = [
-      {
-        text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
-        link: '/',
-        isActive: false,
-      },
-      {
-        text: 'F.A.Qs',
-        link: '/faqs',
-        isActive: true,
-      },
-    ]
-    return (
-      <div>
-        <SEOTags meta={this.state.meta} />
-        {
-          this.state.banner ?
-            <PageLayout
-              header={{ isMobile: this.props.isMobile, isTop: this.props.isTop }}
-              banner={{ title: this.state.banner?.section_name, image: this.state.banner?.section_avatar?.avatar }}
-              breadCrumb={{ items: breadcrumbItems }}
-              activeLang={activeLang}
-            >
-              {/*  /!*====== INTRO START ======*!/*/}
-              <div className="bg-white faq-wrapper">
-                <FAQIntroBlock
-                  faqList={this.state.faqsData}
-                  activeLang={activeLang}
-                />
-                {/*====== INTRO END ======*/}
-              </div>
 
-            </PageLayout>
-            :
-            <div className={"preloader align-items-center justify-content-center"}>
-              <div className="cssload-container">
-                <div className="cssload-loading"><i /><i /><i /><i /></div>
-              </div>
+  useEffect(() => {
+    getFaqData();
+  }, [activeLang]);
+
+  const banner = useSelector((state) => state.allSections.sections?.banner);
+  const meta = useSelector((state) => state.allSections.sections?.meta);
+
+  const breadcrumbItems = [
+    {
+      text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
+      link: '/',
+      isActive: false,
+    },
+    {
+      text: 'F.A.Qs',
+      link: '/faqs',
+      isActive: true,
+    },
+  ]
+  return (
+    <div>
+      <SEOTags meta={meta} />
+      {
+        banner ?
+          <PageLayout
+            header={{ isMobile: props.isMobile, isTop: props.isTop }}
+            banner={{ title: banner?.section_name, image: banner?.section_avatar?.avatar }}
+            breadCrumb={{ items: breadcrumbItems }}
+            activeLang={activeLang}
+          >
+            {/*  /!*====== INTRO START ======*!/*/}
+            <div className="bg-white faq-wrapper">
+              <FAQIntroBlock
+                faqList={faqsData}
+                activeLang={activeLang}
+              />
+              {/*====== INTRO END ======*/}
             </div>
-        }
-      </div>
-    );
-  }
+
+          </PageLayout>
+          :
+          <div className={"preloader align-items-center justify-content-center"}>
+            <div className="cssload-container">
+              <div className="cssload-loading"><i /><i /><i /><i /></div>
+            </div>
+          </div>
+      }
+    </div >
+  );
 }
 
 export default FAQ;

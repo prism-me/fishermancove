@@ -8,7 +8,7 @@ const GalleryGrid = (props) => {
   const [showLightBox, setShowLightBox] = useState(false)
   const [photoIndex, setPhotoIndex] = useState(0)
 
-  console.log("image gallery", props)
+  // console.log("image gallery", props)
   return (
     <div className='container'>
       {

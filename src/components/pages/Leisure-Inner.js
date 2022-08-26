@@ -1,99 +1,114 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import LeisureContentBlocks from '../sections/leisure-inner/content-blocks';
 import FAQSection from '../sections/common/FAQSection';
 import PageLayout from '../layouts/PageLayout';
 import API from '../../langapi/http';
 import { constants } from '../../utils/constants';
 import SEOTags from "../sections/common/SEOTags";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSections, removeSelectedSection, } from '../../redux/actions/sectionsActions';
 
+const LeisureInner = (props) => {
 
-const pageId = `62970741f09c76219b3f3602`;
+  const dispatch = useDispatch();
+  const activeLang = localStorage.getItem('lang');
 
-class LeisureInner extends Component {
+  //Leisure Inner page
+  const pageId = `62970741f09c76219b3f3602`;
 
-  state = {
-    activities: {},
-    intro: {},
-    banner: {},
-    faqsData: [],
-    meta: {}
-  }
+  useEffect(() => {
+    if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
+    return () => {
+      dispatch(removeSelectedSection());
+    };
+  }, [pageId]);
 
-  componentDidMount() {
-    const activeLang = localStorage.getItem('lang');
+  //  faqs Data
 
-    API.get(`/faqs?lang=${activeLang}`).then((faqresponse) => {
-      this.setState({
-        faqsData:
-          faqresponse?.data?.data?.filter(
-            (x) => x.page === "resort_activities"
-          ) || [],
-      });
-    });
+  const [faqsData, setFaqsData] = useState([]);
 
-    API.get(`/all-sections/${pageId}/${activeLang}`).then(response => {
-      this.setState({
-        banner: response?.data?.data[0]?.banner,
-        meta: response?.data?.data[0]?.meta,
-        activities: {
-          lounge: response?.data?.data[0]?.lounge,
-          snorkeling: response?.data?.data[0]?.snorkeling,
-          kayaking: response?.data?.data[0]?.kayaking,
-          marine: response?.data?.data[0]?.marine,
-          others: response?.data?.data[0]?.others,
-        }
-      });
+  const getFaqData = () => {
+    API.get(`/faqs?lang=${activeLang}`).then(response => {
+      const allData = response.data?.data?.filter(
+        (x) => x.page === "resort_activities"
+      ) || [];
+      setFaqsData(allData);
     })
       .catch(err => {
         console.log(err)
       })
   }
-  render() {
-    const activeLang = localStorage.getItem('lang');
-    const breadcrumbItems = [
-      {
-        text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
-        link: '/',
-        isActive: false,
-      },
-      {
-        text: `${constants?.site_content?.leisure_page?.bread_crumb?.title2[activeLang]}`,
-        link: '/whats-on',
-        isActive: false,
-      },
-      {
-        text: `${constants?.site_content?.leisureInner_page?.bread_crumb?.title3[activeLang]}`,
-        link: '/leisure-inner',
-        isActive: true,
-      },
-    ];
-    return (
-      <div className="bg-white leisure-inner-wrapper">
 
-        <SEOTags meta={this.state.meta} />
+  useEffect(() => {
+    getFaqData();
+  }, [activeLang]);
 
-        <PageLayout
-          header={{ isMobile: this.props.isMobile, isTop: this.props.isTop }}
-          banner={{ title: this.state.banner?.section_name, image: this.state.banner?.section_avatar?.avatar }}
-          breadCrumb={{ items: breadcrumbItems }}
-          activeLang={activeLang}
-        >
 
-          {/*====== INTRO START ======*/}
-          <LeisureContentBlocks activities={this.state.activities}
+  const banner = useSelector((state) => state.allSections.sections?.banner);
+  const meta = useSelector((state) => state.allSections.sections?.meta);
+  const lounge = useSelector((state) => state.allSections.sections?.lounge);
+  const snorkeling = useSelector((state) => state.allSections.sections?.snorkeling);
+  const kayaking = useSelector((state) => state.allSections.sections?.kayaking);
+  const marine = useSelector((state) => state.allSections.sections?.marine);
+  const others = useSelector((state) => state.allSections.sections?.others);
+
+  const breadcrumbItems = [
+    {
+      text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
+      link: '/',
+      isActive: false,
+    },
+    {
+      text: `${constants?.site_content?.leisure_page?.bread_crumb?.title2[activeLang]}`,
+      link: '/whats-on',
+      isActive: false,
+    },
+    {
+      text: `${constants?.site_content?.leisureInner_page?.bread_crumb?.title3[activeLang]}`,
+      link: '/leisure-inner',
+      isActive: true,
+    },
+  ];
+  return (
+    <div className="bg-white leisure-inner-wrapper">
+
+      <SEOTags meta={meta} />
+      {
+        lounge ?
+          <PageLayout
+            header={{ isMobile: props.isMobile, isTop: props.isTop }}
+            banner={{ title: banner?.section_name, image: banner?.section_avatar?.avatar }}
+            breadCrumb={{ items: breadcrumbItems }}
             activeLang={activeLang}
-          />
-          {/*====== INTRO END ======*/}
+          >
 
-          <FAQSection
-            faqData={this.state.faqsData}
-            activeLang={activeLang}
-          />
+            {/*====== INTRO START ======*/}
+            <LeisureContentBlocks activities={{
+              lounge,
+              snorkeling,
+              kayaking,
+              marine,
+              others
+            }}
+              activeLang={activeLang}
+            />
+            {/*====== INTRO END ======*/}
 
-        </PageLayout>
-      </div>
-    );
-  }
+            <FAQSection
+              faqData={faqsData}
+              activeLang={activeLang}
+            />
+
+          </PageLayout>
+          :
+          <div className={"preloader align-items-center justify-content-center"}>
+            <div className="cssload-container">
+              <div className="cssload-loading"><i /><i /><i /><i /></div>
+            </div>
+          </div>
+      }
+    </div>
+  );
 }
 
 export default LeisureInner;

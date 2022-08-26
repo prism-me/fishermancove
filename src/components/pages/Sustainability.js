@@ -1,95 +1,83 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import SustainIntroBlock from '../sections/sustainability/intro-block';
 import SustainPillarsBlock from '../sections/sustainability/pillars-block';
 import SustainProjectsBlock from '../sections/sustainability/projects-block';
 import SustainEngeryBlock from '../sections/sustainability/energy-conservation';
-import API from "../../langapi/http";
 import SEOTags from "../sections/common/SEOTags";
 import { constants } from '../../utils/constants';
 import PageLayout from "../layouts/PageLayout";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSections, removeSelectedSection, } from '../../redux/actions/sectionsActions';
 
+const Sustainability = (props) => {
 
-const pageId = `629706ed0da7c94b690c6cc2`;
+  const dispatch = useDispatch();
+  const activeLang = localStorage.getItem('lang');
 
-class Sustainability extends Component {
-  state = {
-    lesiureData: [],
-    activities: {},
-    intro: {},
-    banner: null,
-    meta: {}
-  }
+  //sustainability page
+  const pageId = `629706ed0da7c94b690c6cc2`;
 
-  componentDidMount() {
-    const activeLang = localStorage.getItem('lang');
+  useEffect(() => {
+    if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
+    return () => {
+      dispatch(removeSelectedSection());
+    };
+  }, [pageId]);
 
-    API.get(`/all-sections/${pageId}/${activeLang}`).then(response => {
-      this.setState({
-        banner: response?.data?.data[0]?.banner,
-        meta: response?.data?.data[0]?.meta,
-        activities: {
-          intro: response?.data?.data[0]?.intro,
-          projects: response?.data?.data[0]?.projects,
-          pillars: response?.data?.data[0]?.pillars,
-          energy: response?.data?.data[0]?.energy,
-        }
-      })
-    })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  render() {
-    const activeLang = localStorage.getItem('lang');
+  const banner = useSelector((state) => state.allSections.sections?.banner);
+  const intro = useSelector((state) => state.allSections.sections?.intro);
+  const projects = useSelector((state) => state.allSections.sections?.projects);
+  const pillars = useSelector((state) => state.allSections.sections?.pillars);
+  const energy = useSelector((state) => state.allSections.sections?.energy);
+  const meta = useSelector((state) => state.allSections.sections?.meta);
 
-    const breadcrumbItems = [
+  const breadcrumbItems = [
+    {
+      text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
+      link: '/',
+      isActive: false,
+    },
+    {
+      text: `${constants?.site_content?.sustainbility_page?.bread_crumb?.title2[activeLang]}`,
+      link: '/sustainability',
+      isActive: true,
+    },
+  ]
+  return (
+    <div className="bg-white sustainability-wrapper">
+      <SEOTags meta={meta} />
       {
-        text: `${constants?.site_content?.about_page?.bread_crumb?.title[activeLang]}`,
-        link: '/',
-        isActive: false,
-      },
-      {
-        text: `${constants?.site_content?.sustainbility_page?.bread_crumb?.title2[activeLang]}`,
-        link: '/sustainability',
-        isActive: true,
-      },
-    ]
-    return (
-      <div className="bg-white sustainability-wrapper">
-        <SEOTags meta={this.state.meta} />
-        {
-          this.state.banner ?
-            <PageLayout
-              header={{ isMobile: this.props.isMobile, isTop: this.props.isTop }}
-              banner={{ title: this.state.banner?.section_name, image: this.state.banner?.section_avatar?.avatar }}
-              breadCrumb={{ items: breadcrumbItems }}
+        banner ?
+          <PageLayout
+            header={{ isMobile: props.isMobile, isTop: props.isTop }}
+            banner={{ title: banner?.section_name, image: banner?.section_avatar?.avatar }}
+            breadCrumb={{ items: breadcrumbItems }}
+            activeLang={activeLang}
+          >
+            {/*====== INTRO START ======*/}
+            <SustainIntroBlock data={intro}
               activeLang={activeLang}
-            >
-              {/*====== INTRO START ======*/}
-              <SustainIntroBlock data={this.state.activities?.intro}
-                activeLang={activeLang}
-              />
-              {/*====== INTRO END ======*/}
-              {/*====== PILLARS START ======*/}
-              <SustainPillarsBlock data={this.state.activities?.pillars} />
-              {/*====== PILLARS END ======*/}
-              {/*====== PROJECTS SLIDER START ======*/}
-              <SustainProjectsBlock data={this.state.activities?.projects} />
-              {/*====== PROJECTS SLIDER END ======*/}
-              <SustainEngeryBlock data={this.state.activities?.energy} />
-              {/*====== PROJECTS SLIDER END ======*/}
+            />
+            {/*====== INTRO END ======*/}
+            {/*====== PILLARS START ======*/}
+            <SustainPillarsBlock data={pillars} />
+            {/*====== PILLARS END ======*/}
+            {/*====== PROJECTS SLIDER START ======*/}
+            <SustainProjectsBlock data={projects} />
+            {/*====== PROJECTS SLIDER END ======*/}
+            <SustainEngeryBlock data={energy} />
+            {/*====== PROJECTS SLIDER END ======*/}
 
-            </PageLayout>
-            :
-            <div className={"preloader align-items-center justify-content-center"}>
-              <div className="cssload-container">
-                <div className="cssload-loading"><i /><i /><i /><i /></div>
-              </div>
+          </PageLayout>
+          :
+          <div className={"preloader align-items-center justify-content-center"}>
+            <div className="cssload-container">
+              <div className="cssload-loading"><i /><i /><i /><i /></div>
             </div>
-        }
-      </div>
-    );
-  }
+          </div>
+      }
+    </div>
+  );
 }
 
 export default Sustainability;
