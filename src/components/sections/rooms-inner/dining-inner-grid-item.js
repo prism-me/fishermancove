@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 const OtherRecommendations = (props) => {
-  console.log("data", props?.data)
+  // console.log("data", props?.data)
   return (
     <div className="rooms-recommendations-wrapper">
       <h2 className="section-heading text-muted">{props.title}</h2>

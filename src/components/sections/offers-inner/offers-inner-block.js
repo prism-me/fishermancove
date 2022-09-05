@@ -4,7 +4,7 @@ import { constants } from '../../../utils/constants';
 
 const OffersInnerMainBlock = (props) => {
 
-  console.log("offerData", props?.offerData)
+  // console.log("offerData", props?.offerData)
   return (
     <div className="main-block">
       <div className="container">

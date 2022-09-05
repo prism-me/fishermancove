@@ -44,7 +44,7 @@ function App(props) {
 
     let lang = 'en';
     if (pathArray[1] && (pathArray[1] == 'en' || pathArray[1] == 'fr' || pathArray[1] == 'de' || pathArray[1] == 'ru')) {
-      console.log('homelanguage', pathArray[1]);
+      // console.log('homelanguage', pathArray[1]);
       lang = pathArray[1];
     }
     else {
