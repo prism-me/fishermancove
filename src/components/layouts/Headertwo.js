@@ -7,7 +7,7 @@ import { constants } from "../../utils/constants";
 import EnImg from "../../assets/img/icon/en.png"
 import FrImg from "../../assets/img/icon/fr.png"
 import DeImg from "../../assets/img/icon/de.png"
-// import RuImg from "../../assets/img/icon/ru.png"
+import RuImg from "../../assets/img/icon/ru.png"
 
 
 class Headertwo extends Component {
@@ -202,7 +202,7 @@ class Headertwo extends Component {
                     </span>
                   </div>
 
-                  {/* <div
+                  <div
                     className="hovertool"
                     onClick={() => this.onChangeLocale('ru')}
                   >
@@ -213,7 +213,7 @@ class Headertwo extends Component {
                       className={`hovertooltiptext ${activeLang === 'ru' && 'active'}`}>
                       Russian
                     </span>
-                  </div> */}
+                  </div>
                 </div>
 
 
@@ -301,7 +301,7 @@ class Headertwo extends Component {
                   </span>
                 </div>
 
-                {/* <div
+                <div
                   className="hovertool"
                   onClick={() => this.onChangeLocale('ru')}
                 >
@@ -312,7 +312,7 @@ class Headertwo extends Component {
                     className={`hovertooltiptext ${activeLang === 'ru' && 'active'}`}>
                     Russian
                   </span>
-                </div> */}
+                </div>
               </div>
               {/* Site Logo */}
               <div className="site-logo">

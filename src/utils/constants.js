@@ -272,10 +272,28 @@ export const constants = {
           ru: "Пожалуйста, введите адрес электронной почты"
         },
         place_holder: {
-          en: "Enter your email address",
-          fr: "Entrez votre adresse email",
-          de: "Geben Sie Ihre E-Mail-Adresse ein!",
-          ru: "Введите ваш адрес электронной почты"
+          en: "Email address",
+          fr: "adresse email",
+          de: "E-Mail-Adresse",
+          ru: "адрес электронной почты"
+        },
+        first_name_place_holder: {
+          en: "First Name",
+          fr: "Prénom",
+          de: "Vorname",
+          ru: "Имя"
+        },
+        last_name_place_holder: {
+          en: "Last Name",
+          fr: "Nom de famille",
+          de: "Nachname",
+          ru: "Фамилия"
+        },
+        country_name_place_holder: {
+          en: "Country Name",
+          fr: "Nom du pays",
+          de: "Naam van het land",
+          ru: "Имя страны"
         },
         submit_text: {
           en: "Successfully Subscribed !",
