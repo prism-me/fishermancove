@@ -382,6 +382,15 @@ class Headertwo extends Component {
                   </span>
                 </div>
               </div>
+              <div className="deskVirtualBtn">
+                <a
+                  href="https://geckodigital.co/vt/FishermansCoveResort/"
+                  className="virtual_tour"
+                  target="_blank"
+                >
+                  Take a Virtual Tour
+                </a>
+              </div>
               {/* Site Logo */}
               <div className="site-logo">
                 <Link to="/" className="main-logo">
