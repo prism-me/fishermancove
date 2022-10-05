@@ -1231,6 +1231,35 @@ header {
 	}
 }
 
+
+
+
+.sticky_trip_button {
+	display: block;
+	position: fixed;
+	bottom: 15%;
+	right: -65px;
+	width: auto;
+	z-index: 999;
+	transform: rotate(-90deg);
+
+	.virtual_tour {
+		background-color: $primary-color;
+		color: #fff;
+		padding: .7rem .9rem;
+		font-weight: bold;
+		font-size: 15px;
+		transition: .3s all ease-in-out;
+
+		// &:hover {
+		// 	background-color: transparent;
+		// 	color: #07585c;
+		// 	box-shadow: none;
+		// }
+	}
+
+}
+
 /*=======  Breadcrumb CSS  =======*/
 .breadcrumb-area {
 	background-size: cover;
