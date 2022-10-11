@@ -382,7 +382,7 @@ class Headertwo extends Component {
                   </span>
                 </div>
               </div>
-              <div className="deskVirtualBtn">
+              {/* <div className="deskVirtualBtn">
                 <a
                   href="https://geckodigital.co/vt/FishermansCoveResort/"
                   className="virtual_tour"
@@ -390,7 +390,7 @@ class Headertwo extends Component {
                 >
                   Take a Virtual Tour
                 </a>
-              </div>
+              </div> */}
               {/* Site Logo */}
               <div className="site-logo">
                 <Link to="/" className="main-logo">
@@ -482,10 +482,14 @@ class Headertwo extends Component {
         <div class="sticky_trip_button">
           <a
             href="https://geckodigital.co/vt/FishermansCoveResort/"
-            className="virtual_tour"
+            className="virtual_tour_tag"
             target="_blank"
           >
-            Take a Virtual Tour
+            <img
+              src={require("./../../assets/img/virtualbtn.gif")}
+              alt="virtual button"
+            />
+            {/* Take a Virtual Tour */}
           </a>
         </div>
         {/*====== OFF CANVAS START ======*/}

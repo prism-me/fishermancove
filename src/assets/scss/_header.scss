@@ -58,7 +58,7 @@ header {
       .main-logo {
         position: absolute;
         top: 0;
-        display: contents;
+        // display: contents;
 
         // transform: translate(50%, 0%);
         @media #{$sm} {
@@ -1249,25 +1249,29 @@ header {
 }
 
 .sticky_trip_button {
-  display: none;
+  // display: none;
   position: fixed;
-  bottom: 15%;
-  right: -65px;
+  // bottom: 15%;
+  bottom: 7%;
+  // right: -65px;
+  right: 0px;
   width: auto;
   z-index: 999;
-  transform: rotate(-90deg);
-
-  @media (max-width: 767px) {
-    display: block;
+  // transform: rotate(-90deg);
+  img {
+    object-fit: cover;
+    width: 100px;
   }
-
-  .virtual_tour {
-    background-color: $primary-color;
-    color: #fff;
-    padding: 0.7rem 0.9rem;
-    font-weight: bold;
-    font-size: 15px;
-    transition: 0.3s all ease-in-out;
+  .virtual_tour_tag {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    // background-color: $primary-color;
+    // color: #fff;
+    // padding: 0.7rem 0.9rem;
+    // font-weight: bold;
+    // font-size: 15px;
+    // transition: 0.3s all ease-in-out;
 
     // &:hover {
     // 	background-color: transparent;
