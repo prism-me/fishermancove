@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Container } from "react-bootstrap";
 import CancelIcon from "@material-ui/icons/Cancel";
-import popupimg from "../../assets/img/OctoberCampaign_post.jpg";
+import API from "../../langapi/http";
 
 const PopUp = (props) => {
+  const [popUpData, setPopUpData] = useState("");
+
+  const getPopUpData = () => {
+    API.get(`/pop-up/63465d630ac6a76716045822`)
+      .then((response) => {
+        const allData = response.data?.data;
+        setPopUpData(allData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getPopUpData();
+  }, []);
+
   return (
     <Modal
       {...props}
@@ -19,11 +36,9 @@ const PopUp = (props) => {
       <Container>
         <div>
           <Modal.Body>
-            <a
-              href={`/${props.activeLang}/offers/10-percentage-off-dinner-for-two`}
-            >
+            <a href={`/${props.activeLang}${popUpData?.link}`}>
               <img
-                src={popupimg}
+                src={popUpData?.image}
                 alt="popup fishermans cove resort"
                 className="img-fluid"
                 // style={{
