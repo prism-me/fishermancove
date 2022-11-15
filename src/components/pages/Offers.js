@@ -18,10 +18,12 @@ const Offers = (props) => {
   const pageId = '629a08d1316b8e36e6367322';
 
   useEffect(() => {
+    // console.log(props);
     if (activeLang && activeLang !== "" && pageId && pageId !== "") dispatch(fetchSections(pageId, activeLang));
     return () => {
       dispatch(removeSelectedSection());
     };
+    
   }, [pageId]);
 
   //  offers Data
