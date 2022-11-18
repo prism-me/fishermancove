@@ -34,6 +34,7 @@
 			}
 			@media #{$xsm} {
 				font-size: 28px;
+				
 			}
 			@media #{$tiny} {
 				font-size: 28px;
@@ -83,7 +84,7 @@
 		.single-thumb {
 			overflow: hidden;
 			img {
-				animation: zoomIn 15s linear infinite;
+				// animation: zoomIn 15s linear infinite;
 			}
 		}
 	}
@@ -133,18 +134,18 @@
 	&.banner-style-two,
 	&.banner-style-three {
 		.single-banner {
-			height: 85vh;
+			height: 90vh;
 			&.sub-banner {
-				height: 65vh;
+				// height: 65vh;
 				@media #{$sm} {
-					height: 35vh;
+					// height: 35vh;
 				}
 			}
 			position: relative;
 			z-index: 1;
 			overflow: hidden;
 			@media #{$sm} {
-				height: 400px;
+				height: 540px;
 			}
 			.banner-bg,
 			.banner-overly {
@@ -160,10 +161,12 @@
 			.banner-overly {
 				background-color: $heading-color;
 				z-index: -1;
-				opacity: 0.3;
+				opacity: 0.1;
 			}
-			.banner-bg {
-				animation: zoomIn 15s linear infinite;
+			.home-mobile-banner {
+				background: url('https://fisherman.b-cdn.net/black-friday/home-page-banner-mobile.jpg') !important;
+				background-repeat: no-repeat;
+				// animation: zoomIn 15s linear infinite;
 			}
 		}
 		.banner-content {
@@ -248,3 +251,107 @@
 		}
 	}
 }
+
+
+
+.expired-notice {
+	text-align: center;
+	padding: 2rem;
+	border: 1px solid #ebebeb;
+	border-radius: 0.25rem;
+	margin: 0.5rem;
+  }
+  
+  .expired-notice > span {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: #11595c;
+  }
+  
+  .expired-notice > p {
+	font-size: 1.5rem;
+  }
+  
+
+  
+  .show-counter .countdown-link {
+
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 1.75rem;
+    padding: 1rem 0px 5px;
+    width: 67%;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: #fff;
+    margin: 2rem 4px 0px;
+    justify-content: center;
+  }
+  
+  .show-counter .countdown {
+	line-height: 1.25rem;
+	padding: 0 0.75rem 0 0.75rem;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .show-counter .countdown.danger {
+	color: #fff;
+  }
+  
+  .show-counter .countdown > p {
+	margin: 0;
+    border: 1px solid #11595c;
+    padding: 1rem;
+    background: #11595c;
+  }
+  .show-counter .type {
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 67%;
+  }
+  
+  .show-counter .countdown > span {
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	line-height: 1rem;
+  }
+  
+
+  @media only screen and (max-width: 600px) {
+  
+	.show-counter .countdown-link {
+
+		
+		font-size: 1.50rem;
+		line-height: 1.75rem;
+		padding: 1rem 0px 5px;
+		width: 100%;
+		justify-content: flex-start;
+
+	  }
+	  .show-counter .type{
+		display: none;
+	  }
+	  .home-page-title{
+		display: none;
+	  }
+	  .home-page-wrapper-row{
+		margin-top: 8rem;
+		margin-left: 0.5rem;
+	  }
+	  .countdown-mobile-view-adjustment{
+		margin-left: -2rem;
+	  }
+	  .home-page-wrapper-row .show-counter .countdown-link{
+		margin :2rem -12px 0px;
+		
+	  }
+
+  }
+

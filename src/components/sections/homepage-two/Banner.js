@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import ReactWOW from "react-wow";
 import { Hidden } from "@material-ui/core";
 import { constants } from "../../../utils/constants";
+import CountdownTimer from "../counter/countdownTimer";
 
 class Banner extends Component {
   componentDidMount() {
@@ -19,26 +20,60 @@ class Banner extends Component {
       arrows: false,
     };
 
+    let currentRoute = window.location.pathname;
+    let homePageURI = currentRoute.split("/")[2];
+    let styles = "";
+    if (homePageURI === undefined && this.props?.isMobile) {
+      styles = {
+        backgroundImage: `url(https://fisherman.b-cdn.net/black-friday/home-page-banner-mobile.jpg)`,
+        backgroundPosition: "left",
+        backgroundSize: "cover",
+      };
+    } else if(homePageURI === "black-friday-sale" && this.props?.isMobile){
+      styles = {
+        backgroundImage: `url(https://fisherman.b-cdn.net/black-friday/black-offer-mobile.jpg)`,
+        backgroundPosition: "left",
+        backgroundSize: "cover",
+      };
+    }else {
+      styles = {
+        backgroundImage: `url(${this.props?.image})`,
+        backgroundPosition: "left",
+        backgroundSize: "cover",
+      };
+    }
+    // let homePageClass;
+
+    // if (homePageURI === undefined && this.props.isMobile) {
+    //   homePageClass = true;
+    // }
+    // console.log("currentRoute", homePageClass);
+
     const bannerPosts = [
       {
         tag: "",
         taganimation: ".6s",
-        title: "The Perfect \n Destination for you",
+        title:
+          "Don't miss the early bird discount for Black Friday. Upto 50% Discount",
+        subtitle:
+          constants?.site_content?.home_page?.banner?.subtitle[
+            this.props?.activeLang
+          ],
         titleanimation: ".9s",
         btn1: `${
-          constants?.site_content?.home_page?.banner?.btn1[
+          constants?.site_content?.home_page?.banner?.btn4[
             this.props?.activeLang
           ]
         }`,
         btn1animation: "1.1s",
-        btn1url: "/gallery",
+        btn1url: "/black-friday-sale",
         btn2: `${
-          constants?.site_content?.home_page?.banner?.btn2[
+          constants?.site_content?.home_page?.banner?.btn5[
             this.props?.activeLang
           ]
         }`,
         btn2animation: "1.3s",
-        btn2url: "/about-us",
+        btn2url: "/rooms-suites-seychelles",
         btn3: `${
           constants?.site_content?.home_page?.banner?.btn3[
             this.props?.activeLang
@@ -49,6 +84,13 @@ class Banner extends Component {
       },
     ];
 
+    const THREE_DAYS_IN_MS = 6 * 24 * 60 * 60 * 1000;
+    //   const SEVEN_DAYS_IN_MS = 7 * 24 * 60 * 60 * 1000;
+    const NOW_IN_MS = new Date().getTime();
+
+    const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+    //   const dateTimeAfterSevenDays = NOW_IN_MS + SEVEN_DAYS_IN_MS;
+    console.log("this.props", this.props);
     return (
       <Slider
         className="banner-area banner-style-two"
@@ -63,7 +105,13 @@ class Banner extends Component {
             }`}
           >
             <div className="container">
-              <div className="row justify-content-left">
+              <div
+                className={
+                  homePageURI
+                    ? `row justify-content-left`
+                    : `row justify-content-left home-page-wrapper-row`
+                }
+              >
                 <div className="col-10 col-lg-6">
                   <div className="banner-content text-left">
                     <ReactWOW
@@ -76,7 +124,11 @@ class Banner extends Component {
                       animation="fadeInLeft"
                       data-delay={item.titleanimation}
                     >
-                      <h1 className="title">{this.props.title}</h1>
+                      <h1 className={homePageURI ? `title` : `title`}>
+                        {this.props.title}
+                        <br />
+                        {this.props?.subtitle}
+                      </h1>
                     </ReactWOW>
                     <ul className={this.props.isMain ? "" : "d-none"}>
                       <ReactWOW
@@ -92,6 +144,7 @@ class Banner extends Component {
                           </Link>
                         </li>
                       </ReactWOW>
+
                       <Hidden smDown>
                         <ReactWOW
                           animation="fadeInUp"
@@ -142,6 +195,7 @@ class Banner extends Component {
                         </ReactWOW>
                       </Hidden>
                     </ul>
+                    <CountdownTimer targetDate={dateTimeAfterThreeDays} />
                   </div>
                 </div>
                 <div
@@ -200,13 +254,14 @@ class Banner extends Component {
               </div>
             </div>
             {/* banner bg */}
+
             <div
-              className="banner-bg"
-              style={{
-                backgroundImage: `url(${this.props?.image})`,
-                backgroundPosition: "left",
-                backgroundSize: "cover",
-              }}
+              className={
+                this.props?.isMobile
+                  ? `banner-bg ${currentRoute ? `` : `home-mobile-banner`}`
+                  : `banner-bg`
+              }
+              style={styles}
             />
             <div className="banner-overly" />
           </div>
