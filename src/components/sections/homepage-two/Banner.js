@@ -5,6 +5,7 @@ import ReactWOW from "react-wow";
 import { Hidden } from "@material-ui/core";
 import { constants } from "../../../utils/constants";
 import CountdownTimer from "../counter/countdownTimer";
+import DateCountdown from "react-date-countdown-timer";
 
 class Banner extends Component {
   componentDidMount() {
@@ -29,13 +30,13 @@ class Banner extends Component {
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
-    } else if(homePageURI === "black-friday-sale" && this.props?.isMobile){
+    } else if (homePageURI === "black-friday-sale" && this.props?.isMobile) {
       styles = {
         backgroundImage: `url(https://fisherman.b-cdn.net/black-friday/black-offer-mobile.jpg)`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
-    }else {
+    } else {
       styles = {
         backgroundImage: `url(${this.props?.image})`,
         backgroundPosition: "left",
@@ -195,7 +196,13 @@ class Banner extends Component {
                         </ReactWOW>
                       </Hidden>
                     </ul>
-                    <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+                    {/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
+                    <DateCountdown
+                      dateTo="November 25, 2022 00:00:00 GMT+03:00"
+                      mostSignificantFigure="day"
+                      numberOfFigures="6"
+                      callback={() => alert("Hello")}
+                    />
                   </div>
                 </div>
                 <div
