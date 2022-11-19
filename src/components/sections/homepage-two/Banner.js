@@ -198,9 +198,9 @@ class Banner extends Component {
                     </ul>
                     {/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
                     <DateCountdown
-                      dateTo="November 25, 2022 00:00:00 GMT+03:00"
+                      dateTo="November 25, 2022"
                       mostSignificantFigure="day"
-                      numberOfFigures="6"
+                      numberOfFigures="4"
                       callback={() => alert("Hello")}
                     />
                   </div>
