@@ -92,6 +92,15 @@ class Banner extends Component {
     const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
     //   const dateTimeAfterSevenDays = NOW_IN_MS + SEVEN_DAYS_IN_MS;
     console.log("this.props", this.props);
+
+    const ExpiredNotice = () => {
+      return (
+        <div className="expired-notice">
+          <span>Expired!!!</span>
+          <p>Please select a future date and time.</p>
+        </div>
+      );
+    };
     return (
       <Slider
         className="banner-area banner-style-two"
@@ -201,7 +210,6 @@ class Banner extends Component {
                       dateTo="November 25, 2022"
                       mostSignificantFigure="day"
                       numberOfFigures="4"
-                      callback={() => alert("Hello")}
                     />
                   </div>
                 </div>
