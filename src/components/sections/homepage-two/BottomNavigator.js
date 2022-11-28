@@ -19,7 +19,6 @@ const BottomNavigator = ({ activeLang }) => {
   };
 
   let currentRoute = window.location.href.split("/")[4];
-  console.log("currentRoute ::", currentRoute);
 
   return (
     <div className="bottom-navigator-wrapper">
@@ -50,6 +49,41 @@ const BottomNavigator = ({ activeLang }) => {
                     : activeLang === "ru"
                     ? "https://be.synxis.com/?Hotel=31842&Chain=27304&locale=ru-RU&promo=LeCardinal"
                     : "https://be.synxis.com/?&chain=27304&hotel=31842&locale=en-GB&promo=LeCardinal"
+                }`
+              )
+            }
+          >
+            {activeLang === "en"
+              ? "Book Now"
+              : activeLang === "fr"
+              ? "Réserver"
+              : activeLang === "de"
+              ? "JETZT BUCHEN"
+              : activeLang === "ru"
+              ? "ЗАБРОНИРОВАТЬ"
+              : "Book Now"}
+          </Link>
+        ) : currentRoute === "black-friday-sale" ? (
+          <Link
+            className="main-btn btn-border"
+            to={"#"}
+            style={{
+              borderColor: "#be8a7d",
+              background: "#be8a7d",
+              color: "white",
+            }}
+            onClick={(e) =>
+              window.gtag_report_conversion(
+                `${
+                  activeLang === "en"
+                    ? "https://be.synxis.com/?&chain=27304&hotel=31842&locale=en-GB&promo=BLACKCOVE"
+                    : activeLang === "fr"
+                    ? "https://be.synxis.com/?Hotel=31842&Chain=27304&locale=fr-FR&promo=BLACKCOVE"
+                    : activeLang === "de"
+                    ? "https://be.synxis.com/?Hotel=31842&Chain=27304&locale=de-DE&promo=BLACKCOVE"
+                    : activeLang === "ru"
+                    ? "https://be.synxis.com/?Hotel=31842&Chain=27304&locale=ru-RU&promo=BLACKCOVE"
+                    : "https://be.synxis.com/?&chain=27304&hotel=31842&locale=en-GB&promo=BLACKCOVE"
                 }`
               )
             }

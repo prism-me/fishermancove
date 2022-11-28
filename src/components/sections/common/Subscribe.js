@@ -78,7 +78,7 @@ const Subscribe = ({ activeLang }) => {
               </div>
 
               <div class="button">
-                <button type="submit" onClick={handleSubmit}>{constants?.site_content?.about_page?.subscribe?.btn_text[activeLang]}</button>
+                <button type="submit" class="submit_button_footer" onClick={handleSubmit}>{constants?.site_content?.about_page?.subscribe?.btn_text[activeLang]}</button>
               </div>
 
             </fieldset>

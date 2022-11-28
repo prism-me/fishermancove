@@ -486,7 +486,8 @@ class Headertwo extends Component {
             target="_blank"
           >
             <img
-              src={require("./../../assets/img/virtualbtn.gif")}
+              // src={require("./../../assets/img/virtualbtn.gif")}
+              src="https://fisherman.b-cdn.net/Fisherman_PeacockBlue_GIF.gif"
               alt="virtual button"
             />
             {/* Take a Virtual Tour */}

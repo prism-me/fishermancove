@@ -75,9 +75,7 @@ const BlackFridayBlock = (props) => {
       <div className="container">
         <div className="inner-block-heading">
           {" "}
-          <h2>
-            Get your Early Bird Access to our Black Friday Weekend Offer now
-          </h2>
+          <h2>Get your Access to our Black Friday Weekend Offer now</h2>
         </div>
         <div className="d-flex flex-wrap title-flex">
           <div className="main-item img-wrapper-sale">
@@ -90,14 +88,14 @@ const BlackFridayBlock = (props) => {
             </div>
             <div className="clearfix"></div>
             <div className="row">
-              <div className="col-md-6 py-4 pr-3">
+              <div className="col-md-6 col-6 py-4 pr-3">
                 <img
                   className="sub-images-sale"
                   alt=""
                   src="https://fisherman.b-cdn.net/black-friday/11.jpg"
                 />
               </div>
-              <div className="col-md-6 py-4 pl-3">
+              <div className="col-md-6 col-6 py-4 pl-3">
                 <img
                   className="sub-images-sale"
                   alt=""
@@ -108,7 +106,7 @@ const BlackFridayBlock = (props) => {
           </div>
           <div className="main-item pl-sm-4">
             <div className="reservations-block-sale mt-3">
-              <h2>Black Weekend at Fisherman’s Cove Resort </h2>
+              <h2>Black Weekend at Fishermans Cove Resort </h2>
               <p>
                 <span className="teal">Booking Date :</span> 25,26,27 November
                 2022 and <span className="teal">Staying date : </span> Open
@@ -125,12 +123,25 @@ const BlackFridayBlock = (props) => {
                 <br />
                 <span className="gold">T&C Apply</span>
                 <br />
-                <span className="gold">Promo Code:</span> Black Friday
+                <span className="gold">Promo Code:</span> BLACKCOVE
               </p>
+
+              <button
+                className="main-btn btn-eden my-4"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.gtag_report_conversion(
+                    "https://be.synxis.com/?Hotel=31842&Chain=27304&promo=BLACKCOVE",
+                    true
+                  );
+                }}
+              >
+                Book Now
+              </button>
             </div>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-12">
             <form className="black-firday-form">
               <h3 className="text-center mb-3">
@@ -197,7 +208,7 @@ const BlackFridayBlock = (props) => {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

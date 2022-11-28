@@ -3,10 +3,10 @@ export const constants = {
     home_page: {
       banner: {
         title: {
-          en: "Don't miss the early bird discount.",
-          fr: "Don't miss the early bird discount.",
-          de: "Don't miss the early bird discount.",
-          ru: "Don't miss the early bird discount.",
+          en: "Don't miss the discount.",
+          fr: "Don't miss the discount.",
+          de: "Don't miss the discount.",
+          ru: "Don't miss the discount.",
         },
         subtitle: {
           en: "Up to 50% !",
@@ -15,10 +15,16 @@ export const constants = {
           ru: "Up to 50% !",
         },
         btn1: {
-          en: "gallery",
+          en: "Gallery",
           fr: "Galerie",
           de: "Galerie",
           ru: "галерея",
+        },
+        btn4: {
+          en: "Offers",
+          fr: "Des Offres",
+          de: "Angebote",
+          ru: "Предложения",
         },
         btn2: {
           en: "Learn More",
@@ -31,12 +37,6 @@ export const constants = {
           fr: "Réserver",
           de: "JETZT BUCHEN",
           ru: "ЗАБРОНИРОВАТЬ",
-        },
-        btn4: {
-          en: "Sign Up",
-          fr: "S'inscrire",
-          de: "Aanmelden",
-          ru: "Зарегистрироваться",
         },
         btn5: {
           en: "Rooms",

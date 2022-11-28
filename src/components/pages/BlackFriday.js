@@ -64,7 +64,7 @@ class BlackFriday extends Component {
               title: "",
               image:
                 // "https://fisherman.b-cdn.net/black-friday/Web%20banner%202.jpg",
-                "https://fisherman.b-cdn.net/black-friday/black-friday-offer-page.jpg",
+                "https://fisherman.b-cdn.net/black-friday/black-friday-desktop-banner-opt.jpg",
               // "https://fisherman.b-cdn.net/black-friday/Web%20banner%2022.jpg",
             }}
             breadCrumb={{ items: breadcrumbItems }}

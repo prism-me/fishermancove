@@ -71,9 +71,9 @@ const Hometwo = (props) => {
             constants?.site_content?.home_page?.banner?.subtitle[activeLang],
 
           image:
-            "https://fisherman.b-cdn.net/black-friday/home-page-banner.jpg",
+            "https://fisherman.b-cdn.net/banner/home-banner-desktop.jpg",
           mobile:
-            "https://fisherman.b-cdn.net/black-friday/home-page-banner-mobile.jpg",
+            "https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg",
         }}
         // breadCrumb={{ items: breadcrumbItems }}
         activeLang={activeLang}

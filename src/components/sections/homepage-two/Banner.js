@@ -4,13 +4,8 @@ import Slider from "react-slick";
 import ReactWOW from "react-wow";
 import { Hidden } from "@material-ui/core";
 import { constants } from "../../../utils/constants";
-import CountdownTimer from "../counter/countdownTimer";
-import DateCountdown from "react-date-countdown-timer";
 
 class Banner extends Component {
-  componentDidMount() {
-    console.log("this.props.location.pathname", this.props);
-  }
   render() {
     const settings = {
       infinite: true,
@@ -26,13 +21,13 @@ class Banner extends Component {
     let styles = "";
     if (homePageURI === undefined && this.props?.isMobile) {
       styles = {
-        backgroundImage: `url(https://fisherman.b-cdn.net/black-friday/home-page-banner-mobile.jpg)`,
+        backgroundImage: `url(https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg)`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
     } else if (homePageURI === "black-friday-sale" && this.props?.isMobile) {
       styles = {
-        backgroundImage: `url(https://fisherman.b-cdn.net/black-friday/black-offer-mobile.jpg)`,
+        backgroundImage: `url(https://fisherman.b-cdn.net/black-friday/black-friday-mobile-banner-opt.jpg)`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
@@ -62,45 +57,30 @@ class Banner extends Component {
           ],
         titleanimation: ".9s",
         btn1: `${
-          constants?.site_content?.home_page?.banner?.btn4[
+          constants?.site_content?.home_page?.banner?.btn1[
             this.props?.activeLang
           ]
         }`,
         btn1animation: "1.1s",
-        btn1url: "/black-friday-sale",
-        btn2: `${
-          constants?.site_content?.home_page?.banner?.btn5[
+        btn1url: "/gallery",
+        btn4: `${
+          constants?.site_content?.home_page?.banner?.btn4[
             this.props?.activeLang
           ]
         }`,
-        btn2animation: "1.3s",
-        btn2url: "/rooms-suites-seychelles",
-        btn3: `${
-          constants?.site_content?.home_page?.banner?.btn3[
-            this.props?.activeLang
-          ]
-        }`,
-        btn3animation: "1.3s",
-        btn3url: "/",
+        btn4animation: "1.3s",
+        btn4url: "/offers",
+
+        // btn3: `${
+        //   constants?.site_content?.home_page?.banner?.btn3[
+        //     this.props?.activeLang
+        //   ]
+        // }`,
+        // btn3animation: "1.3s",
+        // btn3url: "/",
       },
     ];
 
-    const THREE_DAYS_IN_MS = 6 * 24 * 60 * 60 * 1000;
-    //   const SEVEN_DAYS_IN_MS = 7 * 24 * 60 * 60 * 1000;
-    const NOW_IN_MS = new Date().getTime();
-
-    const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
-    //   const dateTimeAfterSevenDays = NOW_IN_MS + SEVEN_DAYS_IN_MS;
-    console.log("this.props", this.props);
-
-    const ExpiredNotice = () => {
-      return (
-        <div className="expired-notice">
-          <span>Expired!!!</span>
-          <p>Please select a future date and time.</p>
-        </div>
-      );
-    };
     return (
       <Slider
         className="banner-area banner-style-two"
@@ -155,17 +135,17 @@ class Banner extends Component {
                         </li>
                       </ReactWOW>
 
-                      <Hidden smDown>
+                      <Hidden>
                         <ReactWOW
                           animation="fadeInUp"
-                          data-delay={item.btn2animation}
+                          data-delay={item.btn4animation}
                         >
                           <li>
                             <Link
                               className="main-btn btn-border"
-                              to={`/${this.props?.activeLang}${item.btn2url}`}
+                              to={`/${this.props?.activeLang}${item.btn4url}`}
                             >
-                              {item.btn2}
+                              {item.btn4}
                             </Link>
                           </li>
                         </ReactWOW>
@@ -173,9 +153,9 @@ class Banner extends Component {
                       <Hidden mdUp>
                         <ReactWOW
                           animation="fadeInUp"
-                          data-delay={item.btn3animation}
+                          data-delay={item.btn4animation}
                         >
-                          <li>
+                          {/* <li>
                             <Link
                               className="main-btn btn-border"
                               to={`/${this.props?.activeLang}${item.btn3url}`}
@@ -201,16 +181,10 @@ class Banner extends Component {
                             >
                               {item.btn3}
                             </Link>
-                          </li>
+                          </li> */}
                         </ReactWOW>
                       </Hidden>
                     </ul>
-                    {/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
-                    <DateCountdown
-                      dateTo="November 25, 2022"
-                      mostSignificantFigure="day"
-                      numberOfFigures="4"
-                    />
                   </div>
                 </div>
                 <div
