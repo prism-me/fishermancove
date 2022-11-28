@@ -49,12 +49,8 @@ class Banner extends Component {
       {
         tag: "",
         taganimation: ".6s",
-        title:
-          "Don't miss the early bird discount for Black Friday. Upto 50% Discount",
-        subtitle:
-          constants?.site_content?.home_page?.banner?.subtitle[
-            this.props?.activeLang
-          ],
+        title: "",
+        subtitle: "",
         titleanimation: ".9s",
         btn1: `${
           constants?.site_content?.home_page?.banner?.btn1[
@@ -116,8 +112,6 @@ class Banner extends Component {
                     >
                       <h1 className={homePageURI ? `title` : `title`}>
                         {this.props.title}
-                        <br />
-                        {this.props?.subtitle}
                       </h1>
                     </ReactWOW>
                     <ul className={this.props.isMain ? "" : "d-none"}>

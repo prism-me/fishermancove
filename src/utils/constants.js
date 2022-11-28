@@ -3,10 +3,10 @@ export const constants = {
     home_page: {
       banner: {
         title: {
-          en: "Don't miss the discount.",
-          fr: "Don't miss the discount.",
-          de: "Don't miss the discount.",
-          ru: "Don't miss the discount.",
+          en: "The Perfect \n Destination for you",
+          fr: "La destination \n parfaite pour vous",
+          de: "Das perfekte \n Reiseziel für Sie",
+          ru: "Идеальное \n место для вас",
         },
         subtitle: {
           en: "Up to 50% !",

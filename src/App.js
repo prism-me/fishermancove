@@ -1,5 +1,10 @@
 import React, { Suspense, lazy, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import Preloader from "./components/layouts/Preloader";
 import ScrollToTop from "./components/layouts/ScrollToTop";
 import Error404 from "./components/pages/Error404";
@@ -896,32 +901,57 @@ function App(props) {
             )}
           />
 
+          {/* After black friday sale , url redirected to normal offer page    */}
           <Route
             path={`/en/black-friday-sale`}
             exact
             render={(props) => (
-              <BlackFriday {...props} isMobile={isMobile} isTop={isTop} />
+              <Redirect
+                to={{
+                  pathname: "/en/offers",
+                }}
+                isMobile={isMobile}
+                isTop={isTop}
+              />
             )}
           />
           <Route
             path={`/fr/black-friday-sale`}
             exact
             render={(props) => (
-              <BlackFriday {...props} isMobile={isMobile} isTop={isTop} />
+              <Redirect
+                to={{
+                  pathname: "/fr/offers",
+                }}
+                isMobile={isMobile}
+                isTop={isTop}
+              />
             )}
           />
           <Route
             path={`/de/black-friday-sale`}
             exact
             render={(props) => (
-              <BlackFriday {...props} isMobile={isMobile} isTop={isTop} />
+              <Redirect
+                to={{
+                  pathname: "/de/offers",
+                }}
+                isMobile={isMobile}
+                isTop={isTop}
+              />
             )}
           />
           <Route
             path={`/ru/black-friday-sale`}
             exact
             render={(props) => (
-              <BlackFriday {...props} isMobile={isMobile} isTop={isTop} />
+              <Redirect
+                to={{
+                  pathname: "/ru/offers",
+                }}
+                isMobile={isMobile}
+                isTop={isTop}
+              />
             )}
           />
 
