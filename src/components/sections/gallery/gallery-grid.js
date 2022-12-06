@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RoomGridItem from "./gallery-grid-item";
 import Lightbox from "react-image-lightbox";
+import FsLightbox from "fslightbox-react";
 
 const GalleryGrid = (props) => {
   const [mainSrc, setMainSrc] = useState(props.data?.[0]);
@@ -9,6 +10,9 @@ const GalleryGrid = (props) => {
   const [mediaCat, setMediaCat] = useState();
   const [allGalleryData, setGalleryData] = useState();
   const [selectedItem, setSelectedItem] = useState("all");
+  const [toggler, setToggler] = useState(false);
+  const [popup, setPopup] = useState();
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const manipulation = () => {
     let mediaCategory = [...props?.category];
     mediaCategory.unshift({ _id: "all", name: "All", route: "all" });
@@ -19,6 +23,13 @@ const GalleryGrid = (props) => {
       allMediaPosts.push(JSON.parse(m.category_list))
     );
     setGalleryData(allMediaPosts.flat(Infinity));
+
+    let imagesList = [];
+    console.log("setTogglerHandler", allGalleryData);
+    let d = allGalleryData?.map((i) => imagesList.push(i.avatar));
+
+    // console.log("imagesList", imagesList[0]);
+    setPopup(imagesList);
   };
 
   useEffect(() => {
@@ -46,6 +57,17 @@ const GalleryGrid = (props) => {
     });
     selector.classList.add("show");
     selector.classList.add("active");
+  };
+
+  const setTogglerHandler = (index) => {
+    let imagesList = [];
+    console.log("setTogglerHandler", allGalleryData);
+    let d = allGalleryData?.map((i) => imagesList.push(i.avatar));
+
+    // console.log("imagesList", imagesList[0]);
+    setPopup(imagesList);
+    setToggler(!toggler);
+    setGalleryIndex(index);
   };
   return (
     <div className="container">
@@ -90,19 +112,55 @@ const GalleryGrid = (props) => {
                         >
                           <div className="row">
                             {cat?._id === "all"
-                              ? allGalleryData?.map((data, index) => (
-                                  <img
-                                    src={data?.avatar}
-                                    alt={data?.alt_tag}
-                                    className="img-gallery"
+                              ? allGalleryData?.map((x, i) => (
+                                  <RoomGridItem
+                                    index={i}
+                                    toggleLightBox={(index) => {
+                                      setShowLightBox(!showLightBox);
+                                      setPhotoIndex(i);
+                                      setMainSrc(props?.gallery?.[i]);
+                                    }}
+                                    title={x?.url}
+                                    image={x?.avatar}
+                                    link={x?.avatar}
+                                    linkText={x?.avatar}
+                                    description={x?.url}
                                   />
+                                  // <img
+                                  //   src={data?.avatar}
+                                  //   alt={data?.alt_tag}
+                                  //   className="img-gallery"
+                                  //   toggleLightBox={(index) => {
+                                  //     setShowLightBox(!showLightBox);
+                                  //     setPhotoIndex(index);
+                                  //     setMainSrc(allGalleryData?.[index]);
+                                  //   }}
+                                  // />
                                 ))
-                              : filterData(cat?._id)?.map((data, index) => (
-                                  <img
-                                    src={data?.avatar}
-                                    alt={data?.alt_tag}
-                                    className="img-gallery"
+                              : filterData(cat?._id)?.map((x, i) => (
+                                  <RoomGridItem
+                                    index={i}
+                                    toggleLightBox={(index) => {
+                                      setShowLightBox(!showLightBox);
+                                      setPhotoIndex(index);
+                                      setMainSrc(popup?.[index]);
+                                    }}
+                                    title={x?.url}
+                                    image={x?.avatar}
+                                    link={x?.avatar}
+                                    linkText={x?.avatar}
+                                    description={x?.url}
                                   />
+                                  // <img
+                                  //   src={data?.avatar}
+                                  //   alt={data?.alt_tag}
+                                  //   className="img-gallery"
+                                  //   toggleLightBox={(index) => {
+                                  //     setShowLightBox(!showLightBox);
+                                  //     setPhotoIndex(index);
+                                  //     setMainSrc(allGalleryData?.[index]);
+                                  //   }}
+                                  // />
                                 ))}
                           </div>
                         </div>
@@ -113,30 +171,32 @@ const GalleryGrid = (props) => {
             </div>
           </div>
         </section>
+
+        {/* <FsLightbox toggler={toggler} sources={popup} key={galleryIndex} /> */}
         {/* {
           Object.values(props?.data)?.map((x, i) => (
             <RoomGridItem index={i} toggleLightBox={(index) => { setShowLightBox(!showLightBox); setPhotoIndex(index); setMainSrc(props.data?.[index]) }} title={x?.title} image={x?.avatar} link={x?.link} linkText={x?.linkText} description={x?.description} />
           ))
         } */}
       </div>
-      {/* {
-        showLightBox && <Lightbox
+      {showLightBox && (
+        <Lightbox
           mainSrc={mainSrc?.avatar}
           onCloseRequest={() => setShowLightBox(false)}
-          nextSrc={props.data[(photoIndex + 1) % props.data.length]?.avatar}
-          prevSrc={props.data[(photoIndex + props.data.length - 1) % props.data.length]?.avatar}
+          nextSrc={popup[(photoIndex + 1) % popup.length]?.avatar}
+          prevSrc={
+            popup[(photoIndex + popup.length - 1) % popup.length]?.avatar
+          }
           onMovePrevRequest={() => {
-            setPhotoIndex((photoIndex + props.data.length - 1) % props.data.length);
-            setMainSrc(props.data[(photoIndex + props.data.length - 1) % props.data.length]);
-          }
-          }
+            setPhotoIndex((photoIndex + popup.length - 1) % popup.length);
+            setMainSrc(popup[(photoIndex + popup.length - 1) % popup.length]);
+          }}
           onMoveNextRequest={() => {
-            setPhotoIndex((photoIndex + 1) % props.data.length);
-            setMainSrc(props.data[(photoIndex + 1) % props.data.length]);
-          }
-          }
+            setPhotoIndex((photoIndex + 1) % popup.length);
+            setMainSrc(popup[(photoIndex + 1) % popup.length]);
+          }}
         />
-      } */}
+      )}
     </div>
   );
 };
