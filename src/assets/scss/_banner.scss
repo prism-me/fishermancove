@@ -158,9 +158,9 @@
         background-position: center;
       }
       .banner-overly {
-        background-color: $heading-color;
+        background-color: #00000047;
         z-index: -1;
-        opacity: 0.1;
+        // opacity: 0.1;
       }
       .home-mobile-banner {
         background: url("https://fisherman.b-cdn.net/black-friday/home-page-banner-mobile.jpg") !important;

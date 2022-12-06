@@ -75,7 +75,7 @@ class BlackFriday extends Component {
 
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 class="section-heading">Our Rooms and Suites</h1>
+                <h1 className="section-heading">Our Rooms and Suites</h1>
                 <BlackFridayRoomsSlider rooms={this.state?.rooms} />
               </div>
             </div>

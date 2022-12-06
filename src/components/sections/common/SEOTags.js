@@ -10,7 +10,7 @@ export default function SEOTags(props) {
                         props.meta?.meta_title || "Fishermans Cove Resort"
                     }
                 </title>
-                <meta name="description" content={props.meta?.meta_description} />
+                <meta name="description" content={props?.meta?.meta_description} />
 
             </Helmet>
         </div>

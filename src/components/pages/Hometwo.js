@@ -71,9 +71,9 @@ const Hometwo = (props) => {
             constants?.site_content?.home_page?.banner?.subtitle[activeLang],
 
           image:
-            "https://fisherman.b-cdn.net/banner/home-banner-desktop.jpg",
+            "https://fisherman.b-cdn.net/banner/banner-desktop-home.jpg",
           mobile:
-            "https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg",
+            "https://fisherman.b-cdn.net/banner/banner-mobile-home.jpg",
         }}
         // breadCrumb={{ items: breadcrumbItems }}
         activeLang={activeLang}
@@ -95,9 +95,9 @@ const Hometwo = (props) => {
         {/*====== EXPERIENCE START ======*/}
         <Experience activeLang={activeLang} />
         {/*====== EXPERIENCE END ======*/}
-        {/* <PopUp show={offerPopup} onHide={handleShowOffer}
+        <PopUp show={offerPopup} onHide={handleShowOffer}
           activeLang={activeLang}
-        /> */}
+        />
       </PageLayout>
       {/* <div style={{ display: "none" }}>
           <h3>

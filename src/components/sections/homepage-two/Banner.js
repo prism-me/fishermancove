@@ -21,7 +21,7 @@ class Banner extends Component {
     let styles = "";
     if (homePageURI === undefined && this.props?.isMobile) {
       styles = {
-        backgroundImage: `url(https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg)`,
+        backgroundImage: `url(https://fisherman.b-cdn.net/banner/banner-mobile-home.jpg)`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };

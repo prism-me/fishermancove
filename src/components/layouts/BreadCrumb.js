@@ -5,10 +5,10 @@ const BreadCrumb = (props) => {
   return (
     <div className="container">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol className="breadcrumb">
           {
             props.items?.map((x, i) => (
-              <li class={`breadcrumb-item ${x.isActive ? 'active' : ''}`} aria-current={`${x.isActive ? 'page' : 'false'}`}>
+              <li key={i} className={`breadcrumb-item ${x.isActive ? 'active' : ''}`} aria-current={`${x.isActive ? 'page' : 'false'}`}>
                 <Link to={`/${props?.activeLang}${x.link}`}>{x.text}</Link>
               </li>
             ))

@@ -70,15 +70,15 @@ const Subscribe = ({ activeLang }) => {
               </div>
 
               <div>
-                <input class="long" type="email" name="email" placeholder={constants?.site_content?.about_page?.subscribe?.place_holder[activeLang]} required />
+                <input className="long" type="email" name="email" placeholder={constants?.site_content?.about_page?.subscribe?.place_holder[activeLang]} required />
               </div>
 
               <div>
-                <input class="long" type="text" name="country" placeholder={constants?.site_content?.about_page?.subscribe?.country_name_place_holder[activeLang]} required />
+                <input className="long" type="text" name="country" placeholder={constants?.site_content?.about_page?.subscribe?.country_name_place_holder[activeLang]} required />
               </div>
 
-              <div class="button">
-                <button type="submit" class="submit_button_footer" onClick={handleSubmit}>{constants?.site_content?.about_page?.subscribe?.btn_text[activeLang]}</button>
+              <div className="button">
+                <button type="submit" className="submit_button_footer" onClick={handleSubmit}>{constants?.site_content?.about_page?.subscribe?.btn_text[activeLang]}</button>
               </div>
 
             </fieldset>

@@ -31,7 +31,7 @@ const PopUp = (props) => {
       style={{ paddingLeft: "0px" }}
     >
       <span className={"modalIcon"} onClick={props.onHide}>
-        <CancelIcon class="icon" />
+        <CancelIcon className="icon" />
       </span>
       <Container>
         <div>

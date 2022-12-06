@@ -251,6 +251,7 @@ class Headertwo extends Component {
                       ?.menuItems?.map((x) =>
                         !x.subMenu?.length > 0 ? (
                           <li
+                          key={x.slug}
                             className={`${
                               activeLang === "ru" ? "" : "text-capitalize"
                             }`}
@@ -479,7 +480,7 @@ class Headertwo extends Component {
           </div>
         </header>
         {/*====== HEADER END ======*/}
-        <div class="sticky_trip_button">
+        <div className="sticky_trip_button">
           <a
             href="https://geckodigital.co/vt/FishermansCoveResort/"
             className="virtual_tour_tag"
@@ -520,6 +521,7 @@ class Headertwo extends Component {
                   ?.menuItems?.map((x) =>
                     !x.subMenu?.length > 0 ? (
                       <li
+                      key={x.slug}
                         className={`${
                           activeLang === "ru" ? "" : "text-capitalize"
                         }`}
