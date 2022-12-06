@@ -193,7 +193,7 @@
 
 
 .tabs_center_button ul li {
-  padding: 1rem 2rem;
+  padding: 0rem 1rem;
 }
 
 .img-gallery{
@@ -203,9 +203,9 @@
 
 }
 
-#medialist_area {
-  padding: 60px 0;
-}
+// #medialist_area {
+//   padding: 60px 0;
+// }
 
 #bloglist_area .blog_title h2,
 #medialist_area .media_title h2 {
@@ -263,13 +263,16 @@
 }
 
 #medialist_area .tabs_center_button {
-  margin: 30px 0;
+  margin:0px 0px 30px;
 }
 
 #medialist_area .tabs_center_button ul {
   justify-content: inherit;
 }
 
+#medialist_area .nav-tabs{
+border: none;
+}
 #medialist_area .tabs_center_button ul li span.active,
 #medialist_area .tabs_center_button ul li span:hover {
   background: #3e667b;
@@ -278,6 +281,6 @@
 }
 
 #medialist_area .tabs_center_button ul li span {
-  padding: 15px 30px;
+  padding: 10px 24px;
   cursor: pointer;
 }
