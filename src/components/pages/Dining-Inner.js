@@ -20,14 +20,14 @@ const menuPdf = [
     route: "sunset-bar",
     beverageMenu: `https://fisherman.b-cdn.net/pdf-menus/${SunsetBarBeverageMenu}`,
     ourMainMenu: "",
-    wineList: `https://fisherman.b-cdn.net/pdf-menus/${FCRWineListUPDATED}`,
+    wineList: `https://fisherman.b-cdn.net/pdf-menus/new/${FCRWineListUPDATED}`,
     inRoomDining: `https://fisherman.b-cdn.net/pdf-menus/${FCRInRoomDiningMenuWITHPRICING}`,
   },
   {
     route: "paris-seychelles-restaurant",
     beverageMenu: "",
     ourMainMenu: `https://fisherman.b-cdn.net/pdf-menus/${ParisSeychellesMainMenu}`,
-    wineList: `https://fisherman.b-cdn.net/pdf-menus/${FCRWineListUPDATED}`,
+    wineList: `https://fisherman.b-cdn.net/pdf-menus/new/${FCRWineListUPDATED}`,
     inRoomDining: `https://fisherman.b-cdn.net/pdf-menus/${FCRInRoomDiningMenuWITHPRICING}`,
   },
   {
@@ -41,7 +41,7 @@ const menuPdf = [
     route: "le-cardinal-restaurant",
     beverageMenu: "",
     ourMainMenu: `https://fisherman.b-cdn.net/pdf-menus/${LeCardinalBreakfastMenu}`,
-    wineList: `https://fisherman.b-cdn.net/pdf-menus/${FCRWineListUPDATED}`,
+    wineList: `https://fisherman.b-cdn.net/pdf-menus/new/${FCRWineListUPDATED}`,
     inRoomDining: `https://fisherman.b-cdn.net/pdf-menus/${FCRInRoomDiningMenuWITHPRICING}`,
   },
 ];
