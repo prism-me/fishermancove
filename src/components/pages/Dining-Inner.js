@@ -73,6 +73,12 @@ class DiningInner extends Component {
   };
 
   async componentDidMount() {
+    
+    window.gtag("config", "AW-470789889");
+    window.gtag("event", "conversion", {
+      send_to: "AW-470789889/D9SvCK_PoYYYEIHevuAB",
+    });
+
     let id = this.props.match.params.id;
 
     try {
