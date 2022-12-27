@@ -6,6 +6,7 @@ import RoomSlider from "../sections/homepage-two/RoomSlider";
 import Experience from "../sections/homepage-two/Experience";
 import GuestReviews from "../sections/homepage-two/GuestReviews";
 import ServiceTabs from "../sections/homepage-two/ServicesTabs";
+import Gallery from "../sections/homepage-two/gallery";
 import API from "../../langapi/http";
 import bannerimg1 from "../../assets/img/banner/home.jpg";
 import PopUp from "../popup/PopUp";
@@ -62,7 +63,6 @@ const Hometwo = (props) => {
         <title>Fishermans Cove Resort</title>
         <meta name="description" content="Fishermans Cove Resort" />
       </Helmet>
-
       <PageLayout
         header={{ isMobile: props.isMobile, isTop: props.isTop }}
         banner={{
@@ -70,10 +70,8 @@ const Hometwo = (props) => {
           subtitle:
             constants?.site_content?.home_page?.banner?.subtitle[activeLang],
 
-          image:
-            "https://fisherman.b-cdn.net/banner/home-banner-desktop.jpg",
-          mobile:
-            "https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg",
+          image: "https://fisherman.b-cdn.net/banner/home-banner-desktop.jpg",
+          mobile: "https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg",
         }}
         // breadCrumb={{ items: breadcrumbItems }}
         activeLang={activeLang}
@@ -87,6 +85,9 @@ const Hometwo = (props) => {
         {/*====== TEXT BLOCK START ======*/}
         <Textblock activeLang={activeLang} />
         {/*====== TEXT BLOCK END ======*/}
+        {/*====== Gallery Section START ======*/}
+        <Gallery activeLang={activeLang} />
+        {/*====== Gallery Section END ======*/}
         {/*====== SERVICES TABS START ======*/}
         <ServiceTabs data={premiumOffers} activeLang={activeLang} />
         {/*====== SERVICES TABS END ======*/}

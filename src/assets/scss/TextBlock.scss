@@ -1,0 +1,22 @@
+@import "colors.scss";
+
+.TextblockSection {
+  background-color: white;
+  min-height: 600px;
+  .Thumbnail-container {
+    .Thumbnail-img {
+      position: absolute;
+      bottom: -50px;
+      left: -20px;
+      height: 200px;
+      width: 370px;
+      outline: solid 17px white;
+      transition-delay: 0.2s;
+      &:hover {
+        scale: (1.2);
+        outline: none;
+        transition-delay: 0.2s;
+      }
+    }
+  }
+}

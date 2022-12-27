@@ -5,6 +5,7 @@ import BottomNavigator from "../sections/homepage-two/BottomNavigator";
 import BreadCrumb from "./BreadCrumb";
 import Footertwo from "./Footertwo";
 import Headertwo from "./Headertwo";
+import Headerthree from "./Headerthree";
 import API from "../../langapi/http";
 export default function PageLayout(props) {
   const {
@@ -34,9 +35,15 @@ export default function PageLayout(props) {
         console.log(err);
       });
   };
+
   return (
     <div key={props.key}>
-      <Headertwo {...header} key={props.key} headerData={commonData} />
+      {header.isMobile ? (
+        <Headertwo {...header} key={props.key} headerData={commonData} />
+      ) : (
+        <Headerthree {...header} key={props.key} headerData={commonData} />
+      )}
+
       <Banner {...banner} activeLang={activeLang} isMain={isMain} {...header} />
       {!hideBooking && <Bookingform />}
       <BreadCrumb {...breadCrumb} activeLang={activeLang} />

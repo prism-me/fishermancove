@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ReactWOW from "react-wow";
 import { constants } from "../../../utils/constants";
-
+import "../../../assets/scss/TextBlock.scss";
 class Textblock extends Component {
   render() {
     return (
-      <section className="text-block pt-100">
+      <section className="text-block pt-100 TextblockSection">
         <div className="container">
           <ReactWOW animation="fadeInLeft" data-wow-delay=".3s">
             <div className="row align-items-center1 justify-content-space-between">
@@ -15,6 +15,14 @@ class Textblock extends Component {
                   <img
                     // src={require("../../../assets/img/text-block/hotel.webp")}
                     src="https://fisherman.b-cdn.net/images/about-fcr.jpg"
+                    alt="Fishermancove Resort"
+                  />
+                </div>
+                <div className="Thumbnail-container text-img text-center text-lg-left mb-3 image-wrapper">
+                  <img
+                    className="Thumbnail-img"
+                    src={require("../../../assets/img/text-block/hotel.webp")}
+                    // src="https://fisherman.b-cdn.net/images/about-fcr.jpg"
                     alt="Fishermancove Resort"
                   />
                 </div>
