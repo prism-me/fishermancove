@@ -7,6 +7,7 @@ import Experience from "../sections/homepage-two/Experience";
 import GuestReviews from "../sections/homepage-two/GuestReviews";
 import ServiceTabs from "../sections/homepage-two/ServicesTabs";
 import Gallery from "../sections/homepage-two/gallery";
+import Offers from "../sections/homepage-two/Offers";
 import API from "../../langapi/http";
 import bannerimg1 from "../../assets/img/banner/home.jpg";
 import PopUp from "../popup/PopUp";
@@ -15,6 +16,8 @@ import PageLayout from "../layouts/PageLayout";
 import { constants } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPremiuimOffers } from "../../redux/actions/premiuimOffersActions";
+import OffersInner from "./Offers-Inner";
+import Dining from "../sections/homepage-two/Dining";
 
 const Hometwo = (props) => {
   const dispatch = useDispatch();
@@ -83,16 +86,22 @@ const Hometwo = (props) => {
 
         {/*====== ROOM SLIDER END ======*/}
         {/*====== TEXT BLOCK START ======*/}
-        <Textblock activeLang={activeLang} />
+        <Textblock activeLang={activeLang} isMobile={props.isMobile} />
         {/*====== TEXT BLOCK END ======*/}
         {/*====== Gallery Section START ======*/}
         <Gallery activeLang={activeLang} />
         {/*====== Gallery Section END ======*/}
+        {/*====== Offers Section START ======*/}
+        <Offers activeLang={activeLang} />
+        {/*====== Offers Section END ======*/}
+        {/*====== TESTIMONIAL SLIDER START ======*/}
+        <GuestReviews activeLang={activeLang} />
+        {/* Dining section Start */}
+        <Dining activeLang={activeLang} />
+        {/* Dining section End */}
         {/*====== SERVICES TABS START ======*/}
         <ServiceTabs data={premiumOffers} activeLang={activeLang} />
         {/*====== SERVICES TABS END ======*/}
-        {/*====== TESTIMONIAL SLIDER START ======*/}
-        <GuestReviews activeLang={activeLang} />
         {/*====== EXPERIENCE START ======*/}
         <Experience activeLang={activeLang} />
         {/*====== EXPERIENCE END ======*/}

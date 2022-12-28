@@ -141,6 +141,184 @@ export const constants = {
           ru: "Предлагая бесчисленное количество впечатлений и услуг на протяжении всего вашего путешествия, Fishermans Cove является одним из лучших курортов на Сейшельских островах. В ресторанах и барах вы сможете насладиться восхитительными блюдами. А потягивая экзотические коктейли, можете наслаждаться видом на самый захватывающий закат Индийского океана. К услугам гостей два ресторана и два бара, предоставляющих гостям широкий выбор напитков и блюд.",
         },
       },
+      Gallery: {
+        title: {
+          en: "Breathtaking Tropical Paradise",
+          fr: "Paradis tropical à couper le souffle",
+          de: "Adembenemend tropisch paradijs",
+          ru: "Захватывающий тропический рай",
+        },
+        caption1: {
+          en: "Bubbly BBQ",
+          fr: "Barbecue pétillant",
+          de: "Bruisende BBQ",
+          ru: "Шашлык из шашлыка",
+        },
+        caption2: {
+          en: "Residents Offer",
+          fr: "Offre Résidents",
+          de: "Bewoners aanbieding",
+          ru: "Предложение для резидентов",
+        },
+        caption3: {
+          en: "Renewal of the vows offer",
+          fr: "Renouvellement de l'offre de vœux",
+          de: "Vernieuwing van het geloftenaanbod",
+          ru: "Возобновление обетов предложение",
+        },
+        caption4: {
+          en: "10% off your room plus a bottle of wine",
+          fr: "10% de réduction sur votre chambre plus une bouteille de vin",
+          de: "10% korting op uw kamer plus een fles wijn",
+          ru: "Скидка 10% на номер плюс бутылка вина",
+        },
+        caption5: {
+          en: "10% off your room plus a bottle of wine",
+          fr: "10% de réduction sur votre chambre plus une bouteille de vin",
+          de: "10% korting op uw kamer plus een fles wijn",
+          ru: "Скидка 10% на номер плюс бутылка вина",
+        },
+        caption6: {
+          en: "10% off your room plus a bottle of wine",
+          fr: "10% de réduction sur votre chambre plus une bouteille de vin",
+          de: "10% korting op uw kamer plus een fles wijn",
+          ru: "Скидка 10% на номер плюс бутылка вина",
+        },
+        caption7: {
+          en: "10% off your room plus a bottle of wine",
+          fr: "10% de réduction sur votre chambre plus une bouteille de vin",
+          de: "10% korting op uw kamer plus een fles wijn",
+          ru: "Скидка 10% на номер плюс бутылка вина",
+        },
+      },
+      Offers: {
+        title: {
+          en: "Offers",
+          fr: "Des offres",
+          de: "Aanbiedingen",
+          ru: "Предложения",
+        },
+        Card_text1: {
+          title: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+        Card_text2: {
+          title: {
+            en: "Residents Offer",
+            fr: "Offre Résidents",
+            de: "Bewoners aanbieding",
+            ru: "Предложение для резидентов",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+        Card_text3: {
+          title: {
+            en: "Renewal of the vows offer",
+            fr: "Renouvellement de l'offre de vœux",
+            de: "Vernieuwing van het geloftenaanbod",
+            ru: "Возобновление обетов предложение",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+        Card_text4: {
+          title: {
+            en: "10% off your room plus a bottle of wine",
+            fr: "10% de réduction sur votre chambre plus une bouteille de vin",
+            de: "10% korting op uw kamer plus een fles wijn",
+            ru: "Скидка 10% на номер плюс бутылка вина",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+      },
+      Dining: {
+        title: {
+          en: "Dining",
+          fr: "Des offres",
+          de: "Aanbiedingen",
+          ru: "Предложения",
+        },
+        Card_text1: {
+          title: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+        Card_text2: {
+          title: {
+            en: "Residents Offer",
+            fr: "Offre Résidents",
+            de: "Bewoners aanbieding",
+            ru: "Предложение для резидентов",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+        Card_text3: {
+          title: {
+            en: "Renewal of the vows offer",
+            fr: "Renouvellement de l'offre de vœux",
+            de: "Vernieuwing van het geloftenaanbod",
+            ru: "Возобновление обетов предложение",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+        Card_text4: {
+          title: {
+            en: "10% off your room plus a bottle of wine",
+            fr: "10% de réduction sur votre chambre plus une bouteille de vin",
+            de: "10% korting op uw kamer plus een fles wijn",
+            ru: "Скидка 10% на номер плюс бутылка вина",
+          },
+          captin: {
+            en: "Bubbly BBQ",
+            fr: "Barbecue pétillant",
+            de: "Bruisende BBQ",
+            ru: "Шашлык из шашлыка",
+          },
+        },
+      },
       premium_offer: {
         title: {
           en: "Premium Offerings",

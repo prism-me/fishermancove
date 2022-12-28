@@ -18,14 +18,16 @@ class Textblock extends Component {
                     alt="Fishermancove Resort"
                   />
                 </div>
-                <div className="Thumbnail-container text-img text-center text-lg-left mb-3 image-wrapper">
-                  <img
-                    className="Thumbnail-img"
-                    src={require("../../../assets/img/text-block/hotel.webp")}
-                    // src="https://fisherman.b-cdn.net/images/about-fcr.jpg"
-                    alt="Fishermancove Resort"
-                  />
-                </div>
+                {!this.props.isMobile && (
+                  <div className="Thumbnail-container text-img text-center text-lg-left mb-3 image-wrapper">
+                    <img
+                      className="Thumbnail-img"
+                      src={require("../../../assets/img/text-block/hotel.webp")}
+                      // src="https://fisherman.b-cdn.net/images/about-fcr.jpg"
+                      alt="Fishermancove Resort"
+                    />
+                  </div>
+                )}
               </div>
               <ReactWOW animation="fadeInRight" data-wow-delay=".5s">
                 <div className="col-lg-6 col-md-8 col-sm-10">
