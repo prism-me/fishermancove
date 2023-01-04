@@ -13,7 +13,7 @@ const SustainProjectsBlock = (props) => {
 
           </div>
           <div className="projects-item img-wrapper">
-            <img alt="" className="img-thumbnail" src={props.data?.section_avatar?.avatar} />
+            <img alt="" className="img-thumbnail" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.avatar} />
           </div>
         </div>
       </div>

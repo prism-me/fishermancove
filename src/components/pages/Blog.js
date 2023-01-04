@@ -81,7 +81,10 @@ const Blog = (props) => {
       return (
         <div className="post-box mb-40" key={x?._id}>
           <div className="post-media">
-            <img src={x?.img} alt="image" />
+            <img
+              src={process.env.REACT_APP_IMAGE_BASE_URL + x?.img}
+              alt="image"
+            />
           </div>
           <div className="post-desc">
             <h2>

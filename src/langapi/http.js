@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const apiURL = "https://fishermanscove-resort.com/APIs/public/api";
+// const apiURL = "https://fishermanscove-resort.com/APIs/public/api";
+const apiURL = "https://prismcloudhosting.com/FMCR_APIs/public/api";
+
 const API = axios.create({
   baseURL: apiURL,
   timeout: 60000,
@@ -16,7 +18,6 @@ const API = axios.create({
 
 //   return Promise.reject(error.message);
 // });
-
 
 // API.interceptors.response.use((response) => {
 //   if (response) {

@@ -11,7 +11,7 @@ const OffersInnerMainBlock = (props) => {
         <div className="inner-block-heading" dangerouslySetInnerHTML={{ __html: props.offerData?.short_description }}></div>
         <div className="d-flex flex-wrap title-flex">
           <div className="main-item img-wrapper">
-            <img alt="" src={props.offerData?.thumbnailPreview} />
+            <img alt="" src={process.env.REACT_APP_IMAGE_BASE_URL + props.offerData?.thumbnailPreview} />
           </div>
           <div className="main-item pl-sm-4">
             <div dangerouslySetInnerHTML={{ __html: props.offerData?.post_content }} />

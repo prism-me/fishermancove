@@ -17,7 +17,7 @@ const LeisureContentBlocks = ({ activities, activeLang }) => {
                 <div dangerouslySetInnerHTML={{ __html: x.section_content }}></div>
               </div>
               <div className="image-item">
-                <img className="img-thumbnail" src={x.section_avatar?.avatar} />
+                <img className="img-thumbnail" src={process.env.REACT_APP_IMAGE_BASE_URL + x.section_avatar?.avatar} />
               </div>
             </div>
           ))

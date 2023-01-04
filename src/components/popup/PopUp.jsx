@@ -38,7 +38,7 @@ const PopUp = (props) => {
           <Modal.Body>
             <a href={`/${props.activeLang}${popUpData?.link}`}>
               <img
-                src={popUpData?.image}
+                src={process.env.REACT_APP_IMAGE_BASE_URL + popUpData?.image}
                 alt="popup fishermans cove resort"
                 className="img-fluid"
                 // style={{

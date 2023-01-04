@@ -39,7 +39,7 @@ class Experience extends Component {
                             data.map(x => (
                                 <div className="experience-item" onClick={() => this.props.history.push(`/${this.props?.activeLang}${x.link}`)}>
                                     <div className="background">
-                                        <img className="img-fluid w-100 h-100" src={x.image} alt="" />
+                                        <img className="img-fluid w-100 h-100" src={process.env.REACT_APP_IMAGE_BASE_URL + x.image} alt="" />
                                     </div>
                                     <div className="foreground">
                                         <h3>

@@ -18,7 +18,7 @@ const SeychellesIntroBlock = (props) => {
             </div>
           </div>
           <div className="intro-item img-wrapper">
-            <img alt="" src={props.data?.section_avatar?.avatar} />
+            <img alt="" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.avatar} />
           </div>
         </div>
       </div>

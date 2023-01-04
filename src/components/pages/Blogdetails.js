@@ -127,7 +127,7 @@ const Blogdetails = (props) => {
                           </Link></li>
                         </ul>
                         <figure className="mt-45 mb-45">
-                          <img src={singleBlogData?.img} alt="image" />
+                          <img src={process.env.REACT_APP_IMAGE_BASE_URL + singleBlogData?.img} alt="image" />
                         </figure>
                         <p
                           dangerouslySetInnerHTML={{
@@ -154,7 +154,7 @@ const Blogdetails = (props) => {
                                 blogData?.map((x, i) => (
                                   <div className="col-md-6" key={x?._id}>
                                     <div className="related-post-box mb-50">
-                                      <img src={x?.img} alt="img" className='imgstyle' />
+                                      <img src={process.env.REACT_APP_IMAGE_BASE_URL + x?.img} alt="img" className='imgstyle' />
                                       {/* <div className="thumb"
                                 style={{ backgroundImage: `url( ${x?.img})` }} >
                               </div> */}

@@ -26,7 +26,7 @@ const DiningInnerTitleBlock = (props) => {
               {
                 props.dining?.images_list && JSON.parse(props.dining?.images_list)?.map((x, i) => (
                   <div key={x.id}>
-                    <img src={x.avatar} alt="" />
+                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + x.avatar} alt="" />
                   </div>
                 ))
               }

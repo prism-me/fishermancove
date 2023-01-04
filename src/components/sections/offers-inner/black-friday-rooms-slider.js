@@ -48,7 +48,7 @@ const BlackFridayRoomsSlider = (props) => {
               {props?.rooms &&
                 props?.rooms?.map((x, i) => (
                   <div key={x?.id} className="item">
-                    <img src={x?.thumbnailPreview} alt="" />
+                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + x?.thumbnailPreview} alt="" />
                     <h5 className="py-2">
                       <Link to={`rooms/${x?.route}`}>{x?.post_name}</Link>
                     </h5>

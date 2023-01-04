@@ -16,7 +16,7 @@ class AboutSecondaryTextBlock extends Component {
               <div className="row align-items-center1 justify-content-space-between bg-div">
                 <div className="col-lg-6">
                   <div className="text-img text-center text-lg-left mb-3 image-wrapper">
-                    <img src={this.props.data?.section_avatar?.avatar} alt="" />
+                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + this.props.data?.section_avatar?.avatar} alt="" />
                   </div>
                 </div>
                 <ReactWOW animation="fadeInRight" data-wow-delay=".5s">

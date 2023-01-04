@@ -87,7 +87,7 @@ const ServiceTabs = (props) => {
                                 <Grid container spacing={0}>
                                     <Grid item xs={12} sm={12} className="px-0 py-0">
                                         <div className="slider-image-wrapper-service">
-                                            <img src={x.thumbnailPreview} alt={x.title || ""} />
+                                            <img src={process.env.REACT_APP_IMAGE_BASE_URL + x.thumbnailPreview} alt={x.title || ""} />
 
                                             <div className="hotel-title-wrapper">
                                                 <h4 className="hotel-tagline my-3">
