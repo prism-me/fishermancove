@@ -19,7 +19,7 @@ const RoomsInnerOfferSlider = (props) => {
         {
           props.data?.map(x => (
             <div>
-              <div className="rooms-slider-item" style={{ backgroundImage: `url(${x.image})` }}>
+              <div className="rooms-slider-item" style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_BASE_URL + x.image})` }}>
                 <h2>{x.title}</h2>
               </div>
             </div>

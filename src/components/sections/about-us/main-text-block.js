@@ -11,7 +11,7 @@ const AboutTitleBlock = (props) => {
             </div>
           </div>
           <div className="about-title-item img-wrapper">
-            <img alt="" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.avatar} />
+            <img alt="" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.url} />
           </div>
         </div>
       </div>

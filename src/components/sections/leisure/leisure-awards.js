@@ -12,7 +12,7 @@ const LeisureAwards = ({ activeLang, award }) => {
             Object.entries(award)?.map(([key, x]) => (
               <div className="col-6 col-md-3">
                 <div className="award-image-wrapper">
-                  <img src={process.env.REACT_APP_IMAGE_BASE_URL + x.section_avatar?.avatar} alt="sustain" />
+                  <img src={process.env.REACT_APP_IMAGE_BASE_URL + x.section_avatar?.url} alt="sustain" />
                 </div>
               </div>
             ))

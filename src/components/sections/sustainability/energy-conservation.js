@@ -6,7 +6,7 @@ const SustainEngeryBlock = (props) => {
       <div className="container">
         <div className="d-flex flex-wrap title-flex">
           <div className="pillars-item img-wrapper">
-            <img alt="" className="img-thumbnail" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.avatar} />
+            <img alt="" className="img-thumbnail" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.url} />
           </div>
           <div className="pillars-item pl-sm-4">
             <h3 className="">

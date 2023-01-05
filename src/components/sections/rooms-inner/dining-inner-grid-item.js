@@ -17,7 +17,7 @@ const OtherRecommendations = (props) => {
                 <div
                   className="rooms-title"
                   style={{
-                    backgroundImage: `url(${x.thumbnailPreview})`,
+                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_BASE_URL + x.thumbnailPreview})`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                   }}

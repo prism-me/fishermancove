@@ -23,7 +23,7 @@ const RoomsInnerTitleBlock = (props) => {
               {props.room?.images_list && JSON.parse(props.room?.images_list)?.filter((x) => x["is360"] === "false")
                 ?.map((x, i) => (
                   <div key={x.id}>
-                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + x.avatar} alt="" />
+                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + x.url} alt="" />
                   </div>
                 ))}
             </Carousel>

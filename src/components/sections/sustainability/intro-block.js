@@ -11,7 +11,7 @@ const SustainIntroBlock = (props) => {
           <div className="intro-item pr-sm-4" dangerouslySetInnerHTML={{ __html: props.data?.section_content }}>
           </div>
           <div className="intro-item img-wrapper">
-            <img alt="" className="img-thumbnail" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.avatar} />
+            <img alt="" className="img-thumbnail" src={process.env.REACT_APP_IMAGE_BASE_URL + props.data?.section_avatar?.url} />
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ const WeddingGridItem = (props) => {
   return (
     <div className="wedding-grid-item-wrapper">
       <div className="grid-item">
-        <div className="wedding-title" style={{ backgroundImage: `url(${props.image})` }}>
+        <div className="wedding-title" style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_BASE_URL + props.image})` }}>
           <div className="slide-hover-overlay"></div>
         </div>
         <div className="wedding-description">

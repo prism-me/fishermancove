@@ -11,7 +11,7 @@ const RoomVR360 = (props) => {
         <Pannellum
           width="100%"
           height="350px"
-          image={props.image}
+          image={process.env.REACT_APP_IMAGE_BASE_URL + props.image}
           pitch={0}
           yaw={180}
           hfov={110}

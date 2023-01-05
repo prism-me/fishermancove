@@ -6,7 +6,7 @@ const RoomGridItem = (props) => {
   return (
     <div className="room-grid-item-wrapper" >
       <div className="grid-item">
-        <div className="room-title" onClick={() => props.history.push(`/${props?.activeLang}/rooms/${props.link}`)} style={{ backgroundImage: `url(${props.image})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className="room-title" onClick={() => props.history.push(`/${props?.activeLang}/rooms/${props.link}`)} style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_BASE_URL + props.image})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
           <h3>{props.title}</h3>
           <a href={props.link}>{props.linkText}</a>
           <div className="slide-hover-overlay"></div>

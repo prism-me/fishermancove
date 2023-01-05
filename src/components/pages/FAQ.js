@@ -65,7 +65,7 @@ const FAQ = (props) => {
         banner ?
           <PageLayout
             header={{ isMobile: props.isMobile, isTop: props.isTop }}
-            banner={{ title: banner?.section_name, image: banner?.section_avatar?.avatar }}
+            banner={{ title: banner?.section_name, image: banner?.section_avatar?.url }}
             breadCrumb={{ items: breadcrumbItems }}
             activeLang={activeLang}
           >

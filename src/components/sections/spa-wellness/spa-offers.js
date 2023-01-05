@@ -12,7 +12,7 @@ const SpaWellnessRecommendations = (props) => {
             props.data?.slice(2, 5).map((x, i) => (
               <div className="col-12 col-md-4 no-gutters px-2">
                 <a href={`${x?.post_name === "Book Now" ? `${x.post_url}` : `/${props?.activeLang}/${x.post_url}`}`} className="grid-item grid-img">
-                  <div className="spa-title" style={{ backgroundImage: `url(${x.banner_imgPreview})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+                  <div className="spa-title" style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_BASE_URL + x.banner_imgPreview})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
                     <h4>{x.post_name}</h4>
                     <div className="slide-hover-overlay"></div>
                   </div>

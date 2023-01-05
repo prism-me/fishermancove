@@ -33,7 +33,9 @@ class Banner extends Component {
       };
     } else {
       styles = {
-        backgroundImage: `url(${this.props?.image})`,
+        backgroundImage: `url(${
+          process.env.REACT_APP_IMAGE_BASE_URL + this.props?.image
+        })`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
