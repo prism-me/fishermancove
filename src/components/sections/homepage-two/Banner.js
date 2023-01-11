@@ -18,6 +18,7 @@ class Banner extends Component {
 
     let currentRoute = window.location.pathname;
     let homePageURI = currentRoute.split("/")[2];
+
     let styles = "";
     if (homePageURI === undefined && this.props?.isMobile) {
       styles = {
@@ -34,7 +35,13 @@ class Banner extends Component {
     } else {
       styles = {
         backgroundImage: `url(${
-          process.env.REACT_APP_IMAGE_BASE_URL + this.props?.image
+          window.location.pathname == "/" ||
+          window.location.pathname == "/en" ||
+          window.location.pathname == "/fr" ||
+          window.location.pathname == "/de" ||
+          window.location.pathname == "/ru"
+            ? this.props?.image
+            : process.env.REACT_APP_IMAGE_BASE_URL + this.props?.image
         })`,
         backgroundPosition: "left",
         backgroundSize: "cover",

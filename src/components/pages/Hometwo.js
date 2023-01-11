@@ -8,6 +8,8 @@ import GuestReviews from "../sections/homepage-two/GuestReviews";
 import ServiceTabs from "../sections/homepage-two/ServicesTabs";
 import API from "../../langapi/http";
 import bannerimg1 from "../../assets/img/banner/home.jpg";
+import homeBannerDesktop from "../../assets/img/banner/home-banner-desktop.jpg";
+import homeBannerMobile from "../../assets/img/banner/home-banner-mobile.jpg";
 import PopUp from "../popup/PopUp";
 import Helmet from "react-helmet";
 import PageLayout from "../layouts/PageLayout";
@@ -69,9 +71,8 @@ const Hometwo = (props) => {
           title: constants?.site_content?.home_page?.banner?.title[activeLang],
           subtitle:
             constants?.site_content?.home_page?.banner?.subtitle[activeLang],
-
-          image: "home-banner-desktop.jpg",
-          mobile: "home-banner-mobile.jpg",
+          image: { homeBannerDesktop },
+          mobile: { homeBannerMobile },
         }}
         // breadCrumb={{ items: breadcrumbItems }}
         activeLang={activeLang}
