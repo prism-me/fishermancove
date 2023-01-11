@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import ReactWOW from "react-wow";
 import { Hidden } from "@material-ui/core";
 import { constants } from "../../../utils/constants";
+import homeBannerDesktop from "../../../assets/img/banner/home-banner-desktop.jpg";
 
 class Banner extends Component {
   render() {
@@ -40,12 +41,25 @@ class Banner extends Component {
           window.location.pathname == "/fr" ||
           window.location.pathname == "/de" ||
           window.location.pathname == "/ru"
-            ? this.props?.image
+            ? homeBannerDesktop
             : process.env.REACT_APP_IMAGE_BASE_URL + this.props?.image
         })`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
+    }
+
+    {
+      console.log(
+        "window.location.pathname ::",
+        window.location.pathname == "/" ||
+          window.location.pathname == "/en" ||
+          window.location.pathname == "/fr" ||
+          window.location.pathname == "/de" ||
+          window.location.pathname == "/ru"
+          ? homeBannerDesktop
+          : process.env.REACT_APP_IMAGE_BASE_URL + this.props?.image
+      );
     }
     // let homePageClass;
 
