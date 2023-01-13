@@ -5,6 +5,7 @@ import ReactWOW from "react-wow";
 import { Hidden } from "@material-ui/core";
 import { constants } from "../../../utils/constants";
 import homeBannerDesktop from "../../../assets/img/banner/home-banner-desktop.jpg";
+import homeBannerMobile from "../../../assets/img/banner/home-banner-mobile.jpg";
 
 class Banner extends Component {
   render() {
@@ -23,7 +24,7 @@ class Banner extends Component {
     let styles = "";
     if (homePageURI === undefined && this.props?.isMobile) {
       styles = {
-        backgroundImage: `url(https://fisherman.b-cdn.net/banner/home-banner-mobile.jpg)`,
+        backgroundImage: `url(${homeBannerMobile})`,
         backgroundPosition: "left",
         backgroundSize: "cover",
       };
@@ -49,18 +50,6 @@ class Banner extends Component {
       };
     }
 
-    {
-      console.log(
-        "window.location.pathname ::",
-        window.location.pathname == "/" ||
-          window.location.pathname == "/en" ||
-          window.location.pathname == "/fr" ||
-          window.location.pathname == "/de" ||
-          window.location.pathname == "/ru"
-          ? homeBannerDesktop
-          : process.env.REACT_APP_IMAGE_BASE_URL + this.props?.image
-      );
-    }
     // let homePageClass;
 
     // if (homePageURI === undefined && this.props.isMobile) {
