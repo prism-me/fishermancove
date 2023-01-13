@@ -32,7 +32,8 @@ const menuPdf = [
   },
   {
     route: "le-cocoloba-bar",
-    beverageMenu: "",
+    beverageMenu:
+      "https://fisherman.b-cdn.net/pdf-menus/FCR%20Le%20Colobo%20Bar_FR.pdf",
     ourMainMenu: `https://fisherman.b-cdn.net/pdf-menus/${LeCocolobaFoodMenu}`,
     wineList: `https://fisherman.b-cdn.net/pdf-menus/${LeCocolobaBarDrinksMenu}`,
     inRoomDining: `https://fisherman.b-cdn.net/pdf-menus/${FCRInRoomDiningMenuWITHPRICING}`,
@@ -73,7 +74,6 @@ class DiningInner extends Component {
   };
 
   async componentDidMount() {
-    
     window.gtag("config", "AW-470789889");
     window.gtag("event", "conversion", {
       send_to: "AW-470789889/D9SvCK_PoYYYEIHevuAB",
