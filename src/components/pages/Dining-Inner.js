@@ -15,6 +15,8 @@ const ParisSeychellesMainMenu = "FCR Paris Seyshelles FR A4.pdf";
 const LeCocolobaFoodMenu = "Le Cocoloba Bar Food Menu 20.05.22.pdf";
 const LeCocolobaBarDrinksMenu = "Le Cocoloba Bar Drinks Menu 31 July 2021.pdf";
 const LeCardinalBreakfastMenu = "Le Cardinal Breakfast Menu.pdf";
+const activeLang = localStorage.getItem("lang");
+
 const menuPdf = [
   {
     route: "sunset-bar",
@@ -32,8 +34,11 @@ const menuPdf = [
   },
   {
     route: "le-cocoloba-bar",
-    beverageMenu:
-      "https://fisherman.b-cdn.net/pdf-menus/FCR%20Le%20Colobo%20Bar_FR.pdf",
+    beverageMenu: `${
+      activeLang == "fr"
+        ? "https://fisherman.b-cdn.net/pdf-menus/FCR%20Le%20Colobo%20Bar_FR.pdf"
+        : ""
+    }`,
     ourMainMenu: `https://fisherman.b-cdn.net/pdf-menus/${LeCocolobaFoodMenu}`,
     wineList: `https://fisherman.b-cdn.net/pdf-menus/${LeCocolobaBarDrinksMenu}`,
     inRoomDining: `https://fisherman.b-cdn.net/pdf-menus/${FCRInRoomDiningMenuWITHPRICING}`,
