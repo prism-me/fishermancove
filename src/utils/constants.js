@@ -414,6 +414,13 @@ export const constants = {
           de: "SPEISEKARTE HERUNTERLADEN",
           ru: "Скачать наше меню",
         },
+        night_menu: {
+          en: "Download our Theme Nights",
+          fr: "Telecharez Notre menu",
+          de: "Laden Sie unsere Themenabende herunter          ",
+          ru: "Загрузите наши тематические вечера",
+        },
+
         beverage_menu: {
           en: "Download Beverage Menu",
           fr: "TÉLÉCHARGEZ LE MENU DES BOISSONS",

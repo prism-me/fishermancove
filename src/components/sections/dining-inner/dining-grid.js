@@ -53,12 +53,22 @@ const DiningInnerInfo = (props) => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <button className="main-btn btn-filled">
-                    {
-                      constants?.site_content?.dinningInner_page
-                        ?.diningInner_Info?.our_menu[props?.activeLang]
-                    }
-                  </button>
+                  {
+                    constants?.site_content?.dinningInner_page?.diningInner_Info
+                      ?.our_menu[props?.activeLang]
+                  }
+                </a>
+                <a
+                  href={menus[0].nightMenu}
+                  className={menus[0].nightMenu === "" ? "pdf_btn_hide" : ""}
+                  without
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {
+                    constants?.site_content?.dinningInner_page?.diningInner_Info
+                      ?.night_menu[props?.activeLang]
+                  }
                 </a>
                 <a
                   href={menus[0].beverageMenu}
@@ -67,12 +77,10 @@ const DiningInnerInfo = (props) => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <button className="main-btn btn-filled">
-                    {
-                      constants?.site_content?.dinningInner_page
-                        ?.diningInner_Info?.beverage_menu[props?.activeLang]
-                    }
-                  </button>
+                  {
+                    constants?.site_content?.dinningInner_page?.diningInner_Info
+                      ?.beverage_menu[props?.activeLang]
+                  }
                 </a>
                 <a
                   href={menus[0].wineList}
@@ -81,12 +89,10 @@ const DiningInnerInfo = (props) => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <button className="main-btn btn-filled">
-                    {
-                      constants?.site_content?.dinningInner_page
-                        ?.diningInner_Info?.Wine_list[props?.activeLang]
-                    }
-                  </button>
+                  {
+                    constants?.site_content?.dinningInner_page?.diningInner_Info
+                      ?.Wine_list[props?.activeLang]
+                  }
                 </a>
                 <a
                   href={menus[0].inRoomDining}
@@ -95,12 +101,10 @@ const DiningInnerInfo = (props) => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <button className="main-btn btn-filled">
-                    {
-                      constants?.site_content?.dinningInner_page
-                        ?.diningInner_Info?.room_dining[props?.activeLang]
-                    }
-                  </button>
+                  {
+                    constants?.site_content?.dinningInner_page?.diningInner_Info
+                      ?.room_dining[props?.activeLang]
+                  }
                 </a>
               </div>
             )}
