@@ -416,7 +416,7 @@ export const constants = {
         },
         night_menu: {
           en: "Download our Theme Nights",
-          fr: "Telecharez Notre menu",
+          fr: "Soirées à theme",
           de: "Laden Sie unsere Themenabende herunter          ",
           ru: "Загрузите наши тематические вечера",
         },
